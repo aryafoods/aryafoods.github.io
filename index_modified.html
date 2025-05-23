@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AryaFoods Shop</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f5f5f5;
+      padding: 50px;
+    }
+    h1 {
+      color: #333;
+    }
+    .container {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      background: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Selamat Datang di AryaFoods!</h1>
+    <p>Kami menyediakan berbagai produk makanan berkualitas.</p>
+    <a href="mailto:kontak@aryafoods.shop">Hubungi Kami</a>
+
+    <h2>Formulir Pemesanan</h2>
+    <form action="https://formsubmit.co/kontak@aryafoods.shop" method="POST">
+      <input type="text" name="nama" placeholder="Nama Lengkap" required>
+      <input type="text" name="produk" placeholder="Nama Produk" required>
+      <input type="number" name="jumlah" placeholder="Jumlah" required>
+      <input type="tel" name="no_hp" placeholder="No. HP / WA" required>
+      <textarea name="alamat" placeholder="Alamat Lengkap" required></textarea>
+      <button type="submit">Kirim Pesanan</button>
+    </form>
+
+    <h2>Video Kami di TikTok</h2>
+    <blockquote class="tiktok-embed"
+      cite="https://www.tiktok.com/@aryafoods/video/7345244055269983489"
+      data-video-id="7345244055269983489"
+      style="max-width: 325px;min-width: 325px;">
+      <section></section>
+    </blockquote>
+    <script async src="https://www.tiktok.com/embed.js"></script>
+  </div>
+</body>
+</html>
