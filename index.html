@@ -1,74 +1,66 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AryaFoods Shop</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-color: #f5f5f5;
-      padding: 50px;
-    }
-    h1 {
-      color: #333;
-    }
-    .container {
-      background: white;
-      border-radius: 8px;
-      padding: 20px;
-      max-width: 600px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    a {
-      display: inline-block;
-      margin-top: 20px;
-      text-decoration: none;
-      background: #4CAF50;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 4px;
-    }
-    input, textarea, button {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    button {
-      background-color: #4CAF50;
-      color: white;
-      cursor: pointer;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arya Foods</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { text-align: center; }
+        .menu, .orders { margin-top: 30px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #f4a261; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Selamat Datang di AryaFoods!</h1>
-    <p>Kami menyediakan berbagai produk makanan berkualitas.</p>
-    <a href="mailto:kontak@aryafoods.shop">Hubungi Kami</a>
+    <h1>Arya Foods</h1>
 
-    <h2>Formulir Pemesanan</h2>
-    <form action="https://formsubmit.co/kontak@aryafoods.shop" method="POST">
-      <input type="text" name="nama" placeholder="Nama Lengkap" required>
-      <input type="text" name="produk" placeholder="Nama Produk" required>
-      <input type="number" name="jumlah" placeholder="Jumlah" required>
-      <input type="tel" name="no_hp" placeholder="No. HP / WA" required>
-      <textarea name="alamat" placeholder="Alamat Lengkap" required></textarea>
-      <button type="submit">Kirim Pesanan</button>
-    </form>
+    <section class="menu">
+        <h2>Menu</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Menu</th>
+                    <th>Harga</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Nasi Goreng Spesial</td><td>Rp25.000</td></tr>
+                <tr><td>2</td><td>Mie Ayam Bakso</td><td>Rp20.000</td></tr>
+                <tr><td>3</td><td>Sate Ayam</td><td>Rp30.000</td></tr>
+                <tr><td>4</td><td>Soto Betawi</td><td>Rp28.000</td></tr>
+                <tr><td>5</td><td>Ayam Geprek</td><td>Rp22.000</td></tr>
+                <tr><td>6</td><td>Gado-Gado</td><td>Rp18.000</td></tr>
+                <tr><td>7</td><td>Rendang Daging</td><td>Rp35.000</td></tr>
+                <tr><td>8</td><td>Ikan Bakar</td><td>Rp32.000</td></tr>
+                <tr><td>9</td><td>Tahu Tempe Penyet</td><td>Rp15.000</td></tr>
+                <tr><td>10</td><td>Es Teh Manis</td><td>Rp5.000</td></tr>
+            </tbody>
+        </table>
+    </section>
 
-    <h2>Video Kami di TikTok</h2>
-    <blockquote class="tiktok-embed"
-      cite="https://www.tiktok.com/@aryafoods/video/7345244055269983489"
-      data-video-id="7345244055269983489"
-      style="max-width: 325px;min-width: 325px;">
-      <section></section>
-    </blockquote>
-    <script async src="https://www.tiktok.com/embed.js"></script>
-  </div>
+    <section class="orders">
+        <h2>Pesanan Hari Ini</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nama Pelanggan</th>
+                    <th>Menu Dipesan</th>
+                    <th>Jumlah</th>
+                    <th>Total Harga</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Budi</td><td>Nasi Goreng Spesial</td><td>2</td><td>Rp50.000</td></tr>
+                <tr><td>Siti</td><td>Sate Ayam</td><td>1</td><td>Rp30.000</td></tr>
+                <tr><td>Andi</td><td>Ayam Geprek + Es Teh Manis</td><td>1</td><td>Rp27.000</td></tr>
+                <tr><td>Rina</td><td>Mie Ayam Bakso</td><td>3</td><td>Rp60.000</td></tr>
+                <tr><td>Dedi</td><td>Ikan Bakar + Gado-Gado</td><td>1</td><td>Rp50.000</td></tr>
+            </tbody>
+        </table>
+    </section>
 </body>
 </html>
