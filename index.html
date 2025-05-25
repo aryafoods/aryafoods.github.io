@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pesan Cilok Isian Gajih</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff8e7;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+    }
+    .product-image {
+      width: 100%;
+      border-radius: 10px;
+    }
+    h1 {
+      text-align: center;
+      color: #b3541e;
+    }
+    p {
+      text-align: center;
+    }
+    form {
+      background: #fff;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    label {
+      margin-top: 10px;
+      display: block;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #b3541e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #8b3e16;
+    }
+    .qris-section {
+      margin-top: 30px;
+      text-align: center;
+      background: #fffef2;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #e2caa1;
+    }
+    .qris-section img {
+      width: 200px;
+      margin-top: 10px;
+    }
+    .note {
+      font-size: 14px;
+      color: #555;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Cilok Isian Gajih</h1>
+    <img src="https://i.imgur.com/x9aLRsO.jpg" alt="Cilok Gajih" class="product-image">
+    <p>Lezat, kenyal, dan penuh isian gajih gurih! Pesan sekarang dan rasakan sensasinya.</p>
+
+    <form id="orderForm">
+      <label for="nama">Nama:</label>
+      <input type="text" id="nama" name="nama" required>
+
+      <label for="alamat">Alamat Pengantaran:</label>
+      <textarea id="alamat" name="alamat" required></textarea>
+
+      <label for="jumlah">Jumlah Porsi:</label>
+      <input type="number" id="jumlah" name="jumlah" min="1" required>
+
+      <label for="catatan">Catatan Tambahan:</label>
+      <textarea id="catatan" name="catatan" placeholder="Contoh: Tanpa sambal, kirim sore, dll."></textarea>
+
+      <button type="submit">Kirim Pesanan via WhatsApp</button>
+    </form>
+
+    <div class="qris-section">
+      <h3>Bayar Lewat QRIS</h3>
+      <p>Silakan scan QRIS di bawah ini setelah melakukan pemesanan.</p>
+      <img src="https://www.facebook.com/100015566312913/posts/pfbid0K8w8Wfto4GKZ6UbUgXRvagYWHU5TsoHmxL2FRWiLmxXxrb4tnj4Y5VxvNt6GuLRFl/" alt="QRIS Pembayaran"> <!-- Ganti dengan URL QRIS kamu -->
+      <p class="note">*Kirim bukti transfer via WhatsApp bersama pesanan.</p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("orderForm").addEventListener("submit", function(event){
+      event.preventDefault();
+
+      const nama = document.getElementById("nama").value;
+      const nomor = document.getElementById("nomor").value;
+      const alamat = document.getElementById("alamat").value;
+      const jumlah = document.getElementById("jumlah").value;
+      const catatan = document.getElementById("catatan").value;
+
+      const message = `Halo! Saya ingin memesan Cilok Isian Gajih:\n\nNama: ${nama}\nNo. HP: ${nomor}\nAlamat: ${alamat}\nVarian: ${varian}\nJumlah: ${jumlah} porsi\nCatatan: ${catatan}\n\nSaya sudah melakukan pembayaran via QRIS. Bukti transfer akan saya kirim.`;
+      const phoneNumber = "62859109819017";
+
+      const whatsappUrl = `https://wa.me/62859109819017
+      window.open(whatsappUrl, "_blank");
+    });
+  </script>
+</body>
+</html>
