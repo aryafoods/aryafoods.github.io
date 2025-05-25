@@ -1,39 +1,174 @@
-<!-- Navigasi Tambahan -->
-<div class="nav-buttons">
-  <a href="big-reward.html">Big Reward</a>
-  <a href="alamat.html">Alamat</a>
-  <a href="tentang-kami.html">Tentang Kami</a>
-  <a href="profesi-lain.html">Profesi Lain</a>
-</div>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pesan Cilok Isian Gajih - Arya Foods</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff8e7;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+    }
+    .product-image {
+      width: 100%;
+      border-radius: 10px;
+    }
+    h1 {
+      text-align: center;
+      color: #b3541e;
+    }
+    p {
+      text-align: center;
+    }
+    form {
+      background: #fff;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    label {
+      margin-top: 10px;
+      display: block;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #b3541e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #8b3e16;
+    }
+    .qris-section {
+      margin-top: 30px;
+      text-align: center;
+      background: #fffef2;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #e2caa1;
+    }
+    .qris-section img {
+      width: 200px;
+      margin-top: 10px;
+    }
+    .note {
+      font-size: 14px;
+      color: #555;
+      margin-top: 10px;
+    }
+    .nav-buttons {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .nav-buttons a {
+      display: block;
+      text-align: center;
+      background-color: #b3541e;
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 18px;
+      transition: background-color 0.3s;
+    }
+    .nav-buttons a:hover {
+      background-color: #8b3e16;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Cilok Isian Gajih</h1>
+    <img src="cilokgajih.jpg" alt="Cilok Gajih" class="product-image">
+    <p>Lezat, kenyal, dan penuh isian gajih gurih! Pesan sekarang dan rasakan sensasinya.</p>
 
-<!-- Teks Gratis Ongkir -->
-<div style="background: #fff; padding: 20px; margin-top: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center;">
-  <h2 style="margin: 0; font-size: 20px; color: #b3541e;">Layanan Gratis Ongkos Kirim se-Cibaduyut Raya</h2>
-</div>
+    <!-- Navigasi Tambahan -->
+    <div class="nav-buttons">
+      <a href="big-reward.html">Big Reward</a>
+      <a href="alamat.html">Alamat</a>
+      <a href="tentang-kami.html">Tentang Kami</a>
+      <a href="profesi-lain.html">Profesi Lain</a>
+    </div>
 
-<!-- Form Pemesanan -->
-<form id="orderForm">
-  <label for="nama">Nama:</label>
-  <input type="text" id="nama" name="nama" required>
+    <!-- Form Pemesanan -->
+    <form id="orderForm">
+      <label for="nama">Nama:</label>
+      <input type="text" id="nama" name="nama" required>
 
-  <label for="nomor">Nomor HP:</label>
-  <input type="tel" id="nomor" name="nomor" required>
+      <label for="nomor">Nomor HP:</label>
+      <input type="tel" id="nomor" name="nomor" required>
 
-  <label for="alamat">Alamat Pengantaran:</label>
-  <textarea id="alamat" name="alamat" required></textarea>
+      <label for="alamat">Alamat Pengantaran:</label>
+      <textarea id="alamat" name="alamat" required></textarea>
 
-  <label for="varian">Varian:</label>
-  <select id="varian" name="varian">
-    <option value="Gajih">Gajih</option>
-    <option value="Keju">Keju</option>
-    <option value="Pedas">Pedas</option>
-  </select>
+      <label for="varian">Varian:</label>
+      <select id="varian" name="varian">
+        <option value="Gajih">Gajih</option>
+        <option value="Keju">Keju</option>
+        <option value="Pedas">Pedas</option>
+      </select>
 
-  <label for="jumlah">Jumlah Porsi:</label>
-  <input type="number" id="jumlah" name="jumlah" min="1" required>
+      <label for="jumlah">Jumlah Porsi:</label>
+      <input type="number" id="jumlah" name="jumlah" min="1" required>
 
-  <label for="catatan">Catatan Tambahan:</label>
-  <textarea id="catatan" name="catatan" placeholder="Contoh: Tanpa sambal, kirim sore, dll."></textarea>
+      <label for="catatan">Catatan Tambahan:</label>
+      <textarea id="catatan" name="catatan" placeholder="Contoh: Tanpa sambal, kirim sore, dll."></textarea>
 
-  <button type="submit">Kirim Pesanan via WhatsApp</button>
-</form>
+      <button type="submit">Kirim Pesanan via WhatsApp</button>
+    </form>
+
+    <!-- Bagian QRIS -->
+    <div class="qris-section">
+      <h3>Bayar Lewat QRIS</h3>
+      <p>Silakan scan QRIS di bawah ini setelah melakukan pemesanan.</p>
+      <img src="qris1.jpg" alt="QRIS Pembayaran">
+      <p class="note">*Kirim bukti transfer via WhatsApp bersama pesanan.</p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("orderForm").addEventListener("submit", function(event){
+      event.preventDefault();
+
+      const nama = document.getElementById("nama").value;
+      const nomor = document.getElementById("nomor").value;
+      const alamat = document.getElementById("alamat").value;
+      const varian = document.getElementById("varian").value;
+      const jumlah = document.getElementById("jumlah").value;
+      const catatan = document.getElementById("catatan").value;
+
+      const message = `Halo! Saya ingin memesan Cilok:\n\nNama: ${nama}\nNo. HP: ${nomor}\nAlamat: ${alamat}\nVarian: ${varian}\nJumlah: ${jumlah} porsi\nCatatan: ${catatan}\n\nSaya sudah melakukan pembayaran via QRIS. Bukti transfer akan saya kirim.`;
+
+      const encodedMessage = encodeURIComponent(message);
+      const phoneNumber = "62859109819017";
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+      window.open(whatsappUrl, "_blank");
+    });
+  </script>
+</body>
+</html>
