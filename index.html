@@ -103,7 +103,7 @@
 <body>
   <div class="container">
     <h1>Selamat datang di halaman Arya </h1>
-    <p>Lezat, kenyal, dan penuh isian gajih gurih! Pesan sekarang dan rasakan sensasinya.</p>
+    <p>Pengusaha rintisan yang bergerak dibidang jasa dan kuliner.</p>
 
     <!-- Navigasi Tambahan -->
     <div class="nav-buttons">
@@ -112,50 +112,5 @@
       <a href="tentang-kami.html">Tentang Kami</a>
       <a href="profesi-lain.html">Profesi Lain</a>
     </div>
-
-    <!-- Form Pemesanan -->
-    <form id="orderForm">
-      <label for="nama">Nama:</label>
-      <input type="text" id="nama" name="nama" required>
-
-      <label for="alamat">Alamat Pengantaran:</label>
-      <textarea id="alamat" name="alamat" required></textarea>
-
-      <label for="jumlah">Jumlah Porsi:</label>
-      <input type="number" id="jumlah" name="jumlah" min="1" required>
-
-      <label for="catatan">Catatan Tambahan:</label>
-      <textarea id="catatan" name="catatan" placeholder="Contoh: Tanpa sambal, kirim sore, dll."></textarea>
-
-      <button type="submit">Kirim Pesanan via WhatsApp</button>
-    </form>
-
-    <!-- Bagian QRIS -->
-    <div class="qris-section">
-      <h3>Bayar Lewat QRIS</h3>
-      <p>Silakan scan QRIS di bawah ini setelah melakukan pemesanan.</p>
-      <img src="qris1.jpg" alt="QRIS Pembayaran">
-      <p class="note">*Kirim bukti transfer via WhatsApp bersama pesanan.</p>
-    </div>
-  </div>
-
-  <script>
-    document.getElementById("orderForm").addEventListener("submit", function(event){
-      event.preventDefault();
-
-      const nama = document.getElementById("nama").value;
-      const alamat = document.getElementById("alamat").value;
-      const jumlah = document.getElementById("jumlah").value;
-      const catatan = document.getElementById("catatan").value;
-
-      const message = `Halo! Saya ingin memesan Cilok:\n\nNama: ${nama}\nAlamat: ${alamat}\nJumlah: ${jumlah} porsi\nCatatan: ${catatan}\n\nSaya sudah melakukan pembayaran via QRIS.`;
-
-      const encodedMessage = encodeURIComponent(message);
-      const phoneNumber = "62859109819017";
-      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-
-      window.open(whatsappUrl, "_blank");
-    });
-  </script>
 </body>
 </html>
