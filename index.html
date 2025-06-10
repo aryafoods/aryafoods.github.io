@@ -3,114 +3,277 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ARYA NETWORK</title>
+  <title>Arya Bro</title>
   <style>
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #f7f9fa;
-      color: #333;
-    }
-    header {
-      background-color: #003087;
-      color: white;
-      padding: 1rem 2rem;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 1.5rem;
-    }
-    nav {
-      background-color: #0070ba;
-      display: flex;
-      padding: 0.5rem 2rem;
-    }
-    nav a {
-      color: white;
-      margin-right: 1.5rem;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .container {
-      padding: 2rem;
-    }
-    .card {
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-    .card h2 {
-      margin-top: 0;
-    }
-    footer {
-      background-color: #f1f1f1;
-      padding: 1rem 2rem;
-      text-align: center;
-      font-size: 0.9rem;
+      background: #f0f0f0;
     }
 
-    .video-container {
+    header {
+      background: #fff;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 2;
+    }
+
+    header .menu-btn {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      padding: 6px 15px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      font-weight: 600;
+      transition: background 0.3s, box-shadow 0.3s, top 0.1s;
       position: relative;
-      width: 100%;
-      max-width: 100%;
+      top: 0;
     }
-    video {
-      width: 100%;
-      height: auto;
+
+    header .menu-btn:hover {
+      background: #f9f9f9;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+
+    header .menu-btn:active {
+      top: 2px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    header .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .content {
+      padding: 80px 20px 20px;
+      background: #f0f0f0;
+      color: #333;
+      min-height: 100vh;
+    }
+
+    .content h1 {
+      margin-top: 0;
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .btn {
       display: block;
-      border-radius: 8px;
+      margin: 10px auto;
+      padding: 10px;
+      border: none;
+      border-radius: 20px;
+      background: blue;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+      width: fit-content;
     }
-    .emblem {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 80px;
-      opacity: 0.8;
+
+    .btn:hover {
+      background: darkblue;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      border: 2px solid blue;
+      color: blue;
+    }
+
+    .btn.secondary:hover {
+      background: rgba(0,0,255,0.1);
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100%;
+      background: navy;
+      color: white;
+      overflow-y: auto;
+      transition: all 0.3s ease;
+      z-index: 3;
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 15px;
+      border-bottom: 1px solid #333;
+      color: white;
+      text-decoration: none;
+    }
+
+    #sidebar-menu {
+      left: -250px;
+    }
+    #sidebar-menu.show {
+      left: 0;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      z-index: 2;
+    }
+
+    .overlay.show {
+      display: block;
+    }
+
+    .section-title {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    /* Copyright Styles */
+    footer {
+      background: #fff;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 14px;
+      color: #555;
+      border-top: 1px solid #ccc;
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Arya Network</h1>
-</header>
+  <header>
+    <button class="menu-btn" onclick="toggleMenu()">Menu</button>
+    <div class="logo"></div>
+  </header>
 
-<nav>
-  <a href="aryafoods.html">FOODS</a>
-  <a href="aryaproject.html">PROJECT</a>
-  <a href="aryakawasakilabs.html">KAWASAKI</a>
-  <a href="tentangarya.html">ARYA</a>
-</nav>
-
-<div class="container">
-  <div class="card">
-    <h2>Arya Foods</h2>
-    <p>Kita sediakan jajanan ringan kuota kecil maupun besar, seperti Cilok Isian Gajih, Cilor Istimewa, Telor gulung, Sempol Ayam, Bihun Gulung</p>
+  <div class="sidebar" id="sidebar-menu">
+    <a href="#">FOODS ></a>
+    <a href="#">KONSTRUKSI ></a>
+    <a href="#">LABS KAWASAKI ></a>
+    <a href="#">BANTUAN DAN TANYA JAWAB ></a>
+    <a href="#">UMUM ></a>
   </div>
 
-  <div class="card">
-    <h2>Arya Project</h2>
-    <p>Kita sediain jasa aplikator dan konsultan instalasi alumininium composite panel, divisi facade building high quality</p>
-  </div>
+  <div class="overlay" id="overlay" onclick="closeAll()"></div>
 
+  <div class="content">
+    <h1>Selamat datang di halaman Arya Wiralodra</h1>
   
+    <p>Disini adalah tempat koleksi arya.</p>
+    <p>Mungkin ada yang ingin kamu ketahui tentang menu kuliner yang arya sediakan untuk pemesanan di acara istimewa kamu.</p>
+    <a href="#" class="btn"> Pesan Disini</a>
 
-<!-- VIDEO DENGAN EMBLEM & AUTOPLAY -->
-  <div class="card">
-    <h2>Kata kata hari ini</h2>
-    <div class="video-container">
-      <video autoplay muted loop playsinline>
-        <source src="https://aryafoods.github.io/video.mp4" type="video/mp4">
-        Browser Anda tidak mendukung video HTML5.
-      </video>
-    
+    <p class="section-title">Follow TikTok saya:</p>
+    <div style="border: 2px solid #ccc; padding: 10px; width: 320px; background: #fff;">
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@cilokisiangajih/video/7507262945236094214" data-video-id="7507262945236094214" style="max-width: 320px;min-width: 320px;">
+        <section>
+          <a target="_blank" title="@cilokisiangajih" href="https://www.tiktok.com/@cilokisiangajih">@cilokisiangajih</a>
+          <p>Video TikTok</p>
+        </section>
+      </blockquote>
+      <script async src="https://www.tiktok.com/embed.js"></script>
     </div>
-    <p style="margin-top: 1rem; font-style: italic; text-align: center;">
-      Baik baik lah bicara pada semua orang.<br>
-      Pahami bahwa setiap orang sedang bertarung dengan ujiannya masing-masing.<br>
-      Kita tidak tau sesakit apa luka yang orang tahan hari ini.
-    </p>
+
+    <p class="section-title">Video Facebook saya:</p>
+    <div style="border: 2px solid #ccc; padding: 10px; width: 320px; background: #fff;">
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+        <iframe
+          src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Farya.wiralodra.2025%2Fvideos%2F780871850306709%2F&show_text=0"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+          allowfullscreen
+          scrolling="no"
+          frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+        </iframe>
+      </div>
+      <section style="padding-top: 10px;">
+        <a target="_blank" title="Arya Wiralodra Facebook Video" href="https://www.facebook.com/arya.wiralodra.2025/videos/780871850306709/">
+          Lihat Video di Facebook
+        </a>
+      </section>
+    </div>
+
+    <p class="section-title">Modif Motor:</p>
+    <p>Di sini kamu bisa menemukan berbagai informasi modifikasi motor, tips, dan trik seputar dunia otomotif yang bisa kamu terapkan pada motor kesayanganmu.</p>
+
+    <!-- Widget Jam -->
+    <div id="clock" style="font-size: 24px; font-weight: bold; text-align: center; margin-top: 20px; background: #fff; padding: 10px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      Memuat jam...
+    </div>
+
+    <!-- Video Web Sendiri -->
+    <div style="margin-top: 20px;">
+      <video controls width="320" style="border: 2px solid #ccc; border-radius: 8px; background: #fff;">
+        <source src="https://example.com/video.mp4" type="video/mp4">
+        Browser kamu tidak mendukung pemutar video.
+      </video>
+      
+    <p class="section-title">Mo:</p>
+    <p>Di sini, Mo siap tampil beda dengan sentuhan modifikasi yang bikin motor kamu makin keren. Jangan biarkan motor kamu standar aja—beri sentuhan racing look, warna mencolok, dan detail custom yang bikin semua mata tertuju padanya!</p>
+
+    <!-- TikTok Embed -->
+    <div style="border: 2px solid #ccc; padding: 10px; width: 320px; background: #fff; margin: 20px auto;">
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@cilokisiangajih/video/7507262945236094214" data-video-id="7507262945236094214" style="max-width: 320px; min-width: 320px;">
+        <section>
+          <a target="_blank" title="@cilokisiangajih" href="https://www.tiktok.com/@cilokisiangajih">@cilokisiangajih</a>
+          <p>Video TikTok modifikasi motor</p>
+        </section>
+      </blockquote>
+      <script async src="https://www.tiktok.com/embed.js"></script>
+    </div>
+
+    <p class="section-title">Mo:</p>
+    <p>Joni</p>
+    </div>
   </div>
+
+  <footer>
+    &copy; Arya Wiralodra 2025
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      closeAll();
+      const menu = document.getElementById('sidebar-menu');
+      const overlay = document.getElementById('overlay');
+      menu.classList.toggle('show');
+      overlay.classList.toggle('show');
+    }
+
+    function closeAll() {
+      document.getElementById('sidebar-menu').classList.remove('show');
+      document.getElementById('overlay').classList.remove('show');
+    }
+
+    // Widget Jam
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      const timeString = `${hours}:${minutes}:${seconds}`;
+      document.getElementById('clock').textContent = timeString;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+
+</body>
+</html>
