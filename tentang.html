@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arya Bro</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+    }
+
+    header {
+      background: #fff;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 2;
+    }
+
+    header .menu-btn {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      padding: 6px 15px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      font-weight: 600;
+      transition: background 0.3s, box-shadow 0.3s, top 0.1s;
+      position: relative;
+      top: 0;
+    }
+
+    header .menu-btn:hover {
+      background: #f9f9f9;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+
+    header .menu-btn:active {
+      top: 2px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    header .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .content {
+      padding: 80px 20px 20px;
+      background: #f0f0f0;
+      color: #333;
+      min-height: 100vh;
+    }
+
+    .content h1 {
+      margin-top: 0;
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .btn {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      border: none;
+      border-radius: 20px;
+      background: blue;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+      width: fit-content;
+    }
+
+    .btn:hover {
+      background: darkblue;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      border: 2px solid blue;
+      color: blue;
+    }
+
+    .btn.secondary:hover {
+      background: rgba(0,0,255,0.1);
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100%;
+      background: gray;
+      color: white;
+      overflow-y: auto;
+      transition: all 0.3s ease;
+      z-index: 3;
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 15px;
+      border-bottom: 1px solid #333;
+      color: white;
+      text-decoration: none;
+    }
+
+    #sidebar-menu {
+      left: -250px;
+    }
+    #sidebar-menu.show {
+      left: 0;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      z-index: 2;
+    }
+
+    .overlay.show {
+      display: block;
+    }
+
+    .section-title {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    /* Copyright Styles */
+    footer {
+      background: #fff;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 14px;
+      color: #555;
+      border-top: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <button class="menu-btn" onclick="toggleMenu()">Menu</button>
+    <div class="logo"></div>
+  </header>
+  
+  <div class="sidebar" id="sidebar-menu">
+  <a href="/foods">FOODS></a>
+  <a href="/konstruksi">KONSTRUKSI ></a>
+  <a href="/ax-kawasaki-labs">AX KAWASAKI LABS></a>
+  <a href="/booster-social-media">BOOSTER SOCIAL MEDIA></a>
+  <a href="/tentang">TENTANG ARYA WIRALODRA></a>
+</div>
+
+  <div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+  <div class="content">
+    <h1>Selamat datang di halaman Arya Wiralodra</h1>
+  
+    <p>Terimakasih telah berkunjung di website arya untuk beberapa info bisa klik tombol menu di kiri atas</p>
+    <p>Mungkin ada yang ingin kamu ketahui tentang menu kuliner yang arya sediakan atau layanan jasa kontruksi khusus divisi facade, spesialis Aluminium Composite Panel</p>
+   
+    <!-- Widget Jam -->
+    <div id="clock" style="font-size: 24px; font-weight: bold; text-align: center; margin-top: 20px; background: #fff; padding: 10px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      Memuat jam...
+    </div>
+
+    <p class="section-title">Berdiri sejak covid menginvasi planet bumi</p>
+  
+   
+
+    <!-- Video Web Sendiri -->
+    <div style="margin-top: 20px;">
+      <video controls width="320" style="border: 2px solid #ccc; border-radius: 8px; background: #fff;">
+        <source src="https://aryafoods.github.io/nasukafoods.mp4" type="video/mp4">
+        Browser kamu tidak mendukung pemutar video.
+      </video>
+      
+    <p class="section-title">Story:</p>
+   
+    <p>testos A YANG DULU PERNAH ADA' </p>
+
+
+<div style="text-align: center; margin: 20px 0;">
+  <img src="http://aryafoods.github.io/fotologocilok.jpg" alt="Rasa yang dulu pernah ada" style="max-width: 100%; height: auto; border: 2px solid #ccc; border-radius: 8px; background: #fff; padding: 5px;">
+</div>
+
+<!-- Widget Jam -->
+    <div id="clock" style="font-size: 24px; font-weight: bold; text-align: center; margin-top: 20px; background: #fff; padding: 10px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      
+    </div>
+
+  <p class="section-title">Follback</p>
+  <p>Apa kamu punya akun sosial media? Follow arya agar arya jadi follower kamu, Mungkin dengan begitu bisa berbagi informasi</p>
+  <p>Berikut dibawah adalah akun tiktok yang bisa kamu follow</p>
+   
+    <p class="section-title">Aplikator : Aluminium Composite Panel</p>
+    <p>  Jasa Pemasangan Aluminium Composite Panel (ACP), Kami siap membantu Anda untuk mewujudkan tampilan bangunan yang modern, elegan, dan tahan lama. Dikerjakan oleh tenaga ahli berpengalaman dengan material terbaik<p/>
+        <p>Kami menyediakan jasa pemasangan Aluminium Composite Panel (ACP) dengan desain mewah dan bahan berkualitas. Untuk gedung, Ruko, Perkantoran, Dll,</p>
+        <p>Dengan solusi ACP Terbaik untuk Bangunan Anda! Kami hadir dengan pengalaman bertahun-tahun dalam pemasangan Aluminium Composite Panel, hasil rapi, dan harga kompetitif. Gratis survei & konsultasi! Hubungi kami sekarang atau bisa save dulu nomor whatsapp 0859109819017</p>
+<p>Di bawah adalah motivasi untuk tetap selesaikan apa yang sudah kita mulai</p>
+<p class="section-title">Never surender</p>
+
+    <!-- Video Web Sendiri -->
+    <div style="margin-top: 20px;">
+      <video controls width="320" style="border: 2px solid #ccc; border-radius: 8px; background: #fff;">
+        <source src="https://aryafoods.github.io/videosakti.mp4" type="video/mp4">
+        Browser kamu tidak mendukung pemutar video.
+      </video>
+      
+      
+    <p class="section-title">Ahli: Aluminium Composite Panel</p>
+      </div>
+  <footer>
+    &copy; Arya Wiralodra 2025
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      closeAll();
+      const menu = document.getElementById('sidebar-menu');
+      const overlay = document.getElementById('overlay');
+      menu.classList.toggle('show');
+      overlay.classList.toggle('show');
+    }
+
+    function closeAll() {
+      document.getElementById('sidebar-menu').classList.remove('show');
+      document.getElementById('overlay').classList.remove('show');
+    }
+
+    // Widget Jam
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      const timeString = `${hours}:${minutes}:${seconds}`;
+      document.getElementById('clock').textContent = timeString;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+
+</body>
+</html>
