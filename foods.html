@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cilok Isian Gajih</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+    }
+
+    header {
+      background: #fff;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 2;
+    }
+
+    header .menu-btn {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      padding: 6px 15px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      font-weight: 600;
+      transition: background 0.3s, box-shadow 0.3s, top 0.1s;
+      position: relative;
+      top: 0;
+    }
+
+    header .menu-btn:hover {
+      background: #f9f9f9;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+
+    header .menu-btn:active {
+      top: 2px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    header .logo {
+      font-size: 24px;
+      font-weight: bold;
+Zm    }
+
+    .content {
+      padding: 80px 20px 20px;
+      background: #f0f0f0;
+      color: #333;
+      min-height: 100vh;
+    }
+
+    .content h1 {
+      margin-top: 0;
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .btn {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      border: none;
+      border-radius: 20px;
+      background: blue;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+      width: fit-content;
+    }
+
+    .btn:hover {
+      background: darkblue;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      border: 2px solid blue;
+      color: blue;
+    }
+
+    .btn.secondary:hover {
+      background: rgba(0,0,255,0.1);
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100%;
+      background: gray;
+      color: white;
+      overflow-y: auto;
+      transition: all 0.3s ease;
+      z-index: 3;
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 15px;
+      border-bottom: 1px solid #333;kd
+      color: white;
+      text-decoration: none;
+    }
+
+    #sidebar-menu {
+      left: -250px;
+    }
+    #sidebar-menu.show {
+      left: 0;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      z-index: 2;
+    }
+
+    .overlay.show {
+      display: block;
+    }
+
+    .section-title {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    /* Copyright Styles */
+    footer {
+      background: #fff;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 14px;
+      color: #555;
+      border-top: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <button class="menu-btn" onclick="toggleMenu()">Menu</button>
+    <div class="logo"></div>
+  </header>
+  
+  <div class="sidebar" id="sidebar-menu">
+  <a href="/foods.html">FOODS></a>
+  <a href="/konstruksi.html">KONSTRUKSI ></a>
+  <a href="/ax.html">AX KAWASAKI LABS></a>
+  <a href="/booster.html">BOOSTER SOCIAL MEDIA></a>
+  <a href="/tentang.html">TENTANG ARYA FOODS></a>
+</div>
+
+  <div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+  <div class="content">
+    <h1>Halaman sedang dalam perbaikan</h1>
+  
+    <p>Terimakasih telah berkunjung di website arya untuk beberapa info bisa klik tombol menu di kiri atas</p>
+   
+<!-- Widget Jam -->
+    <div id="clock" style="font-size: 24px; font-weight: bold; text-align: center; margin-top: 20px; background: #fff; padding: 10px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      Memuat jam...
+    </div>
+
+    <
+      
+    <p class="section-title">Ahli: Aluminium Composite Panel</p>
+      </div>
+  <footer>
+    &copy; Arya Wiralodra 2025
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      closeAll();
+      const menu = document.getElementById('sidebar-menu');
+      const overlay = document.getElementById('overlay');
+      menu.classList.toggle('show');
+      overlay.classList.toggle('show');
+    }
+
+    function closeAll() {
+      document.getElementById('sidebar-menu').classList.remove('show');
+      document.getElementById('overlay').classList.remove('show');
+    }
+
+    // Widget Jam
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      const timeString = `${hours}:${minutes}:${seconds}`;
+      document.getElementById('clock').textContent = timeString;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+
+</body>
+</html>
