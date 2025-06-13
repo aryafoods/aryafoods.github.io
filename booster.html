@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Booster Sosial Media</title>
+  <title>Cilok Isian Gajih</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #f0f0f0;
     }
-
     header {
       background: #fff;
       padding: 10px;
@@ -23,7 +22,6 @@
       width: 100%;
       z-index: 2;
     }
-
     header .menu-btn {
       background: #fff;
       border: 1px solid #ccc;
@@ -36,36 +34,30 @@
       position: relative;
       top: 0;
     }
-
     header .menu-btn:hover {
       background: #f9f9f9;
       box-shadow: 0 6px 12px rgba(0,0,0,0.2);
     }
-
     header .menu-btn:active {
       top: 2px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
-
     header .logo {
       font-size: 24px;
       font-weight: bold;
-Zm    }
-
+    }
     .content {
       padding: 80px 20px 20px;
       background: #f0f0f0;
       color: #333;
       min-height: 100vh;
     }
-
     .content h1 {
       margin-top: 0;
       font-size: 28px;
       font-weight: bold;
       text-align: center;
     }
-
     .btn {
       display: block;
       margin: 10px auto;
@@ -80,21 +72,17 @@ Zm    }
       transition: background 0.3s;
       width: fit-content;
     }
-
     .btn:hover {
       background: darkblue;
     }
-
     .btn.secondary {
       background: transparent;
       border: 2px solid blue;
       color: blue;
     }
-
     .btn.secondary:hover {
       background: rgba(0,0,255,0.1);
     }
-
     .sidebar {
       position: fixed;
       top: 0;
@@ -108,22 +96,15 @@ Zm    }
       z-index: 3;
       padding-top: 60px;
     }
-
     .sidebar a {
       display: block;
       padding: 15px;
-      border-bottom: 1px solid #333;kd
+      border-bottom: 1px solid #333;
       color: white;
       text-decoration: none;
     }
-
-    #sidebar-menu {
-      left: -250px;
-    }
-    #sidebar-menu.show {
-      left: 0;
-    }
-
+    #sidebar-menu { left: -250px; }
+    #sidebar-menu.show { left: 0; }
     .overlay {
       position: fixed;
       top: 0;
@@ -134,17 +115,11 @@ Zm    }
       display: none;
       z-index: 2;
     }
-
-    .overlay.show {
-      display: block;
-    }
-
+    .overlay.show { display: block; }
     .section-title {
       font-weight: bold;
       margin-top: 20px;
     }
-
-    /* Copyright Styles */
     footer {
       background: #fff;
       text-align: center;
@@ -163,48 +138,68 @@ Zm    }
   </header>
   
   <div class="sidebar" id="sidebar-menu">
-  <a href="/foods.html">FOODS></a>
-  <a href="/konstruksi.html">KONSTRUKSI ></a>
-  <a href="/ax.html">AX KAWASAKI LABS></a>
-  <a href="/booster.html">BOOSTER SOCIAL MEDIA></a>
-  <a href="/tentang.html">TENTANG ARYA FOODS></a>
-</div>
+    <a href="https://aryafoods.github.io/foods.html">FOODS ></a>
+    <a href="/konstruksi.html">KONSTRUKSI ></a>
+    <a href="/ax.html">AX KAWASAKI LABS ></a>
+    <a href="/booster.html">BOOSTER SOCIAL MEDIA ></a>
+    <a href="/tentang.html">TENTANG ARYA FOODS ></a>
+  </div>
 
   <div class="overlay" id="overlay" onclick="closeAll()"></div>
 
   <div class="content">
-    <h1>Layanan booster sosial media</h1>
-  
-    <p>Alih alih minder view cuma 200an atau cuma 1.k 2.K kenapa gak kita rekayasa tampilan view video tiktok kamu seolah fyp</p>
-   
+    <h1>Layanan Booster Sosial Media</h1>
+    <p>
 
-    <p class="section-title">Content Creator Style</p>
+    <!-- COUNTDOWN WIDGET -->
+    <div style="margin-top: 20px;">
+      <h2 style="text-align:center;"></h2>
+      <div class="countdown" style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;">
+        <div style="background:#fff; padding:10px; border-radius:8px; text-align:center; box-shadow:0 2px 4px rgba(0,0,0,0.1); min-width:70px;">
+          <span id="days">00</span><div>Hari</div>
+        </div>
+        <div style="background:#fff; padding:10px; border-radius:8px; text-align:center; box-shadow:0 2px 4px rgba(0,0,0,0.1); min-width:70px;">
+          <span id="hours">00</span><div>Jam</div>
+        </div>
+        <div style="background:#fff; padding:10px; border-radius:8px; text-align:center; box-shadow:0 2px 4px rgba(0,0,0,0.1); min-width:70px;">
+          <span id="minutes">00</span><div>Menit</div>
+        </div>
+        <div style="background:#fff; padding:10px; border-radius:8px; text-align:center; box-shadow:0 2px 4px rgba(0,0,0,0.1); min-width:70px;">
+          <span id="seconds">00</span><div>Detik</div>
+        </div>
+      </div>
+    </div>
 
-<div style="text-align: center; margin: 20px 0;">
-  <img src="http://aryafoods.github.io/fototiktok.jpeg" alt="Rasa yang dulu pernah ada" style="max-width: 100%; height: auto; border: 2px solid #ccc; border-radius: 8px; background: #fff; padding: 5px;">
-</div>
-  <p>Berikut dibawah adalah contoh akun tiktok yang saya rekayasa tampilan view nya</p>
-  
-<!-- TikTok Embed -->
+    <p class="section-title">Booster sosial media</p>
+    <div style="text-align: center; margin: 20px 0;">
+      <img src="http://aryafoods.github.io/fototiktok.jpeg" alt="Rasa yang dulu pernah ada" style="max-width: 100%; height: auto; border: 2px solid #ccc; border-radius: 8px; background: #fff; padding: 5px;">
+    </div>
+    <p>Beberapa konten kreator menggunakan jasa kami dalam membangun akun, salahsatu nya dengan boot fake follower, False likes, bahkan pada view live mereka, Transaksi aman karena kami menjadi privasi kamu  </p>
+    
+    
+        <p class="section-title">Booster sosial media</p>
+    <div style="text-align: center; margin: 20px 0;">
+      <img src="http://aryafoods.github.io/tiktokboost1.jpg" alt="Rasa yang dulu pernah ada" style="max-width: 100%; height: auto; border: 2px solid #ccc; border-radius: 8px; background: #fff; padding: 5px;">
+    </div>
+    
+    <p class="section-title">Solusi hemat buat seru seruan</p>
+    <p>Minder karena viewernya cuma 200an paling banter 2.K itupun jarang? gimana kalau pakai paket hemat? Walaupun yang nonton robot setidaknya bisa menghibur kamu seolah banyak yang nonton, Cuma Rp 100/video dengan 10.K view pervideo, minimum pesanan Rp 2.000 untuk 20 video, gimana asik kan? </p>
 
+    <p class="section-title">Rekayasa Viewer</p>
     <div style="border: 2px solid #ccc; padding: 10px; width: 320px; background: #fff; margin: 20px auto;">
       <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@cilokisiangajih/video/7507262945236094214" data-video-id="7507262945236094214" style="max-width: 320px; min-width: 320px;">
         <section>
           <a target="_blank" title="@cilokisiangajih" href="https://www.tiktok.com/@cilokisiangajih">@cilokisiangajih</a>
-          
         </section>
       </blockquote>
       <script async src="https://www.tiktok.com/embed.js"></script>
     </div>
-      
-      
-    <p class="section-title">Pelanggan Premium</p>
-    <p>Layanan ini tidak dilakukan secara bebas untuk menghindari pesanan booster yang mungkin akan banyak menyita waktu buat jualan cilok</p>
-    <p>Jadi memang khusus buat kamu dan beberapa pelanggan, privasi kamu dijamin aman</p>
-    <p>Untuk 1.K view tarif Rp 200, 10.K view Rp 1.500, jika 100.K View Rp 5.000 </p>
-    <p>Tapi kalem, ada opsi gratis 50.K view untuk tiap pembelian cilok isian gajih Rp 30.000 via QRIS</p>
-    <p>Klaim reward kamu dengan mengirim bukti pembayaran QRIS ke 08859109819017</p>
-      </div>
+<p>Buat tampilan akun titkok kamu layaknya pro, seolah video video kamu fyp dengan ratusan ribu tayangan di tiap postingan, Dengan tampilan akun yang full viewer setidaknya akun mu memiliki nilai lebih dari yang lainnya</p>
+    <p class="section-title">Booster sosial media</p>
+    <div style="text-align: center; margin: 20px 0;">
+  </div>
+ </div>
+
   <footer>
     &copy; Arya Wiralodra 2025
   </footer>
@@ -223,18 +218,30 @@ Zm    }
       document.getElementById('overlay').classList.remove('show');
     }
 
-    // Widget Jam
-    function updateClock() {
-      const now = new Date();
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      const seconds = String(now.getSeconds()).padStart(2, '0');
-      const timeString = `${hours}:${minutes}:${seconds}`;
-      document.getElementById('clock').textContent = timeString;
+    // Countdown ke 1 September 2025
+    function updateCountdown() {
+      const target = new Date("2025-07-01T00:00:00").getTime();
+      const now = new Date().getTime();
+      const diff = target - now;
+
+      if (diff <= 0) {
+        document.querySelector('.countdown').innerHTML = "<strong>Perpindahan domain telah dimulai!</strong>";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById("days").textContent = String(days).padStart(2, '0');
+      document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
     }
 
-    setInterval(updateClock, 1000);
-    updateClock();
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
   </script>
 
 </body>
