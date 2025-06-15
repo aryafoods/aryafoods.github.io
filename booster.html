@@ -20,38 +20,37 @@
 
   <script>
     let map, marker;
-
     function initMap() {
-      fetchLocation(); // pertama kali
-      setInterval(fetchLocation, 5000); // setiap 5 detik
+      fetchLocation();
+      setInterval(fetchLocation, 5000);
     }
 
     async function fetchLocation() {
       try {
-        const res = await fetch("https://script.google.com/macros/s/AKfycbABC1234567890xyz/exec"); // GANTI DENGAN LINK ANDA
+        const res = await fetch("GANTI_DENGAN_LINK_GAS"); // <--- GANTI
         const data = await res.json();
-        if (!data.latitude || !data.longitude) throw new Error("Data tidak lengkap");
+        if (!data.latitude || !data.longitude) throw new Error("Data tidak valid");
 
         const pos = { lat: parseFloat(data.latitude), lng: parseFloat(data.longitude) };
 
         if (!map) {
           map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 16,
             center: pos,
+            zoom: 16,
           });
-          marker = new google.maps.Marker({ position: pos, map: map, title: "Lokasi Penjual" });
+          marker = new google.maps.Marker({ position: pos, map: map });
         } else {
           marker.setPosition(pos);
           map.setCenter(pos);
         }
       } catch (e) {
-        document.getElementById("map").innerHTML = "Gagal memuat lokasi penjual.";
+        document.getElementById("map").innerText = "Gagal memuat lokasi penjual.";
         console.error(e);
       }
     }
   </script>
 
-  <!-- Ganti API Key Anda -->
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap"></script>
+  <!-- Ganti API key Anda di sini -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=API_KEY_ANDA&callback=initMap"></script>
 </body>
 </html>
