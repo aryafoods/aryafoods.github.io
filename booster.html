@@ -133,37 +133,41 @@
 </head>
 <body>
 
+  <!-- Header -->
   <header>
     <button class="menu-btn" onclick="toggleMenu()">Menu</button>
     <div class="logo">Arya Foods</div>
   </header>
 
-  <div class="sidebar" id="sidebar-menu">
+  <!-- Sidebar Navigation -->
+  <nav class="sidebar" id="sidebar-menu">
     <a href="https://aryafoods.shop/foods.html">CILOK ISIAN GAJIH</a>
-    <a href="/ax.html"> NASUKA KAWASAKI LABS</a>
+    <a href="/ax.html">NASUKA KAWASAKI LABS</a>
     <a href="https://aryafoods.shop/booster.html">BOOSTER SOCIAL MEDIA</a>
     <a href="/tentang.html">TENTANG NASUKA FOODS</a>
     <a href="/tentang.html">TEST NEW PAGES</a>
-  </div>
+  </nav>
 
+  <!-- Overlay -->
   <div class="overlay" id="overlay" onclick="closeAll()"></div>
 
-  <div class="content">
+  <!-- Main Content -->
+  <main class="content">
     <h1 style="text-align:center;">Selamat datang di NASUKA FOODS</h1>
-    <p style="text-align:center;">tes live lokasi</p>
-    
-    </div>
+    <p style="text-align:center;">Tes live lokasi</p>
 
     <!-- Live Location -->
     <div id="live-location">
       Lokasi Anda: <span id="latitude">-</span>, <span id="longitude">-</span>
     </div>
-  </div>    
+  </main>
 
+  <!-- Footer -->
   <footer>
     &copy; Arya Wiralodra 2025
   </footer>
 
+  <!-- JavaScript -->
   <script>
     function toggleMenu() {
       const menu = document.getElementById('sidebar-menu');
@@ -192,7 +196,7 @@
           enableHighAccuracy: true
         });
       } else {
-        document.getElementById("live-location").textContent = "Geolocation tidak didukung browser ini.";
+        document.getElementById("live-location").textContent = "Geolocation tidak didukung oleh browser ini.";
       }
     };
   </script>
