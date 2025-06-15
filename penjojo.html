@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kirim Lokasi Real-Time</title>
+</head>
+<body>
+  <h2>Kirim Lokasi Sekarang</h2>
+  <p id="status">Mengirim lokasi...</p>
+
+  <script>
+    const endpoint = "https://script.google.com/macros/s/AKfycbxGcohhXoKvaRzkzWahMb_ng3htktWJLeBFep8rvGXmIETl20ooNNdeta5OWV3awJ_jbQ/exec";
+
+    function sendLocation(position) {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+
+      fetch(endpoint + "?lat=" + lat + "&lng=" + lng)
+        .then(() => {
+          document.getElementById("status").innerText = `Lokasi dikirim: ${lat}, ${lng}`;
+        })
+        .catch(() => {
+          document.getElementById("status").innerText = "Gagal mengirim lokasi";
+        });
+    }
+
+    function error() {
+      document.getElementById("status").innerText = "Gagal mengambil lokasi.";
+    }
+
+    if (navigator.geolocation) {
+      navigator.geolocation.watchPosition(sendLocation, error, {
+        enableHighAccuracy: true
+      });
+    } else {
+      document.getElementById("status").innerText = "Browser tidak mendukung lokasi.";
+    }
+  </script>
+</body>
+</html>
