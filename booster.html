@@ -3,215 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cilok Isian Gajih - Arya Foods</title>
+  <title>Live Lokasi Penjual - Arya Foods</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f0f0f0;
-    }
-
-    header {
-      background: #fff;
-      padding: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      position: fixed;
-      top: 0;
+    #map {
+      height: 400px;
       width: 100%;
-      z-index: 2;
-    }
-
-    .menu-btn {
-      background: #fff;
-      border: 1px solid #ccc;
-      border-radius: 25px;
-      padding: 6px 15px;
-      cursor: pointer;
-      font-weight: 600;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    }
-
-    .logo {
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .content {
-      padding: 80px 20px 40px;
-    }
-
-    .btn {
-      display: inline-block;
-      margin: 20px auto;
-      padding: 12px 20px;
-      background: green;
-      color: white;
-      font-weight: bold;
-      border: none;
-      border-radius: 25px;
-      text-decoration: none;
-      text-align: center;
-      transition: background 0.3s;
-    }
-
-    .btn:hover {
-      background: darkgreen;
-    }
-
-    .section-title {
-      font-weight: bold;
-      margin-top: 30px;
-      font-size: 18px;
-    }
-
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: -250px;
-      width: 250px;
-      height: 100%;
-      background: #333;
-      color: white;
-      overflow-y: auto;
-      transition: all 0.3s ease;
-      z-index: 3;
-      padding-top: 60px;
-    }
-
-    .sidebar a {
-      display: block;
-      padding: 15px;
-      border-bottom: 1px solid #444;
-      color: white;
-      text-decoration: none;
-    }
-
-    .sidebar.show {
-      left: 0;
-    }
-
-    .overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.5);
-      display: none;
-      z-index: 2;
-    }
-
-    .overlay.show {
-      display: block;
-    }
-
-    video, img {
-      max-width: 100%;
-      margin-top: 15px;
+      margin-top: 20px;
       border-radius: 10px;
       border: 2px solid #ccc;
-      background: #fff;
-    }
-
-    footer {
-      background: #fff;
-      text-align: center;
-      padding: 15px;
-      font-size: 14px;
-      color: #555;
-      border-top: 1px solid #ccc;
-      margin-top: 40px;
-    }
-
-    #lokasi-penjual {
-      margin-top: 30px;
-      padding: 15px;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
   </style>
 </head>
 <body>
+  <h1 style="text-align:center;">Lokasi Penjual Sekarang</h1>
+  <div id="map">Memuat peta...</div>
 
-  <!-- Header -->
-  <header>
-    <button class="menu-btn" onclick="toggleMenu()">Menu</button>
-    <div class="logo">Arya Foods</div>
-  </header>
-
-  <!-- Sidebar Navigation -->
-  <nav class="sidebar" id="sidebar-menu">
-    <a href="https://aryafoods.shop/foods.html">CILOK ISIAN GAJIH</a>
-    <a href="/ax.html">NASUKA KAWASAKI LABS</a>
-    <a href="https://aryafoods.shop/booster.html">BOOSTER SOCIAL MEDIA</a>
-    <a href="/tentang.html">TENTANG NASUKA FOODS</a>
-    <a href="/tentang.html">TEST NEW PAGES</a>
-  </nav>
-
-  <!-- Overlay -->
-  <div class="overlay" id="overlay" onclick="closeAll()"></div>
-
-  <!-- Main Content -->
-  <main class="content">
-    <h1 style="text-align:center;">Selamat datang di NASUKA FOODS</h1>
-    <p style="text-align:center;">Lihat posisi penjual langsung di bawah:</p>
-
-    <!-- Lokasi Penjual -->
-    <div id="lokasi-penjual">
-      <p>Memuat lokasi penjual...</p>
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    &copy; Arya Wiralodra 2025
-  </footer>
-
-  <!-- JavaScript -->
   <script>
-    function toggleMenu() {
-      const menu = document.getElementById('sidebar-menu');
-      const overlay = document.getElementById('overlay');
-      menu.classList.toggle('show');
-      overlay.classList.toggle('show');
-    }
+    let map, marker;
 
-    function closeAll() {
-      document.getElementById('sidebar-menu').classList.remove('show');
-      document.getElementById('overlay').classList.remove('show');
-    }
-
-    async function tampilkanLokasiPenjual() {
+    async function fetchLocation() {
       try {
-        const res = await fetch('https://script.google.com/macros/s/AKfycbxGcohhXoKvaRzkzWahMb_ng3htktWJLeBFep8rvGXmIETl20ooNNdeta5OWV3awJ_jbQ/exec');
+        const res = await fetch("https://script.google.com/macros/s/AKfycbxGcohhXoKvaRzkzWahMb_ng3htktWJLeBFep8rvGXmIETl20ooNNdeta5OWV3awJ_jbQ/exec");
         const data = await res.json();
+        const { latitude, longitude } = data;
 
-        const lat = parseFloat(data.lat).toFixed(6);
-        const lng = parseFloat(data.lng).toFixed(6);
+        const pos = { lat: parseFloat(latitude), lng: parseFloat(longitude) };
 
-        const lokasiDiv = document.getElementById("lokasi-penjual");
-        lokasiDiv.innerHTML = `
-          <p><strong>Posisi penjual saat ini:</strong></p>
-          <p>Latitude: ${lat}<br>Longitude: ${lng}</p>
-          <iframe 
-            width="100%" 
-            height="300" 
-            frameborder="0" 
-            style="border:0" 
-            referrerpolicy="no-referrer-when-downgrade" 
-            src="https://www.google.com/maps?q=${lat},${lng}&z=15&output=embed" 
-            allowfullscreen>
-          </iframe>
-        `;
+        if (!map) {
+          map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 16,
+            center: pos,
+          });
+          marker = new google.maps.Marker({
+            position: pos,
+            map: map,
+            title: "Lokasi Penjual",
+          });
+        } else {
+          marker.setPosition(pos);
+          map.setCenter(pos);
+        }
       } catch (e) {
-        document.getElementById("lokasi-penjual").innerHTML = `<p style="color:red;">Gagal memuat lokasi penjual.</p>`;
+        document.getElementById("map").innerHTML = "Gagal memuat lokasi penjual.";
       }
     }
 
-    tampilkanLokasiPenjual();
-    setInterval(tampilkanLokasiPenjual, 15000); // Update setiap 15 detik
+    setInterval(fetchLocation, 5000); // update setiap 5 detik
+    fetchLocation(); // jalankan pertama kali
   </script>
 
+  <!-- Ganti YOUR_API_KEY dengan API key kamu -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=fetchLocation"></script>
 </body>
 </html>
