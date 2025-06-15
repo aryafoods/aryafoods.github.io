@@ -4,16 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cilok Isian Gajih - Arya Foods</title>
-  <script>
-    UPLOADCARE_PUBLIC_KEY = 'eca4fb82f74db33566bc';
-  </script>
-  <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #f0f0f0;
     }
+
     header {
       background: #fff;
       padding: 10px;
@@ -26,6 +23,7 @@
       width: 100%;
       z-index: 2;
     }
+
     .menu-btn {
       background: #fff;
       border: 1px solid #ccc;
@@ -35,13 +33,16 @@
       font-weight: 600;
       box-shadow: 0 4px 8px rgba(0,0,0,0.15);
     }
+
     .logo {
       font-size: 20px;
       font-weight: bold;
     }
+
     .content {
       padding: 80px 20px 40px;
     }
+
     .btn {
       display: inline-block;
       margin: 20px auto;
@@ -55,14 +56,17 @@
       text-align: center;
       transition: background 0.3s;
     }
+
     .btn:hover {
       background: darkgreen;
     }
+
     .section-title {
       font-weight: bold;
       margin-top: 30px;
       font-size: 18px;
     }
+
     .sidebar {
       position: fixed;
       top: 0;
@@ -76,6 +80,7 @@
       z-index: 3;
       padding-top: 60px;
     }
+
     .sidebar a {
       display: block;
       padding: 15px;
@@ -83,9 +88,11 @@
       color: white;
       text-decoration: none;
     }
+
     .sidebar.show {
       left: 0;
     }
+
     .overlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -93,9 +100,11 @@
       display: none;
       z-index: 2;
     }
+
     .overlay.show {
       display: block;
     }
+
     video, img {
       max-width: 100%;
       margin-top: 15px;
@@ -103,6 +112,7 @@
       border: 2px solid #ccc;
       background: #fff;
     }
+
     footer {
       background: #fff;
       text-align: center;
@@ -112,47 +122,83 @@
       border-top: 1px solid #ccc;
       margin-top: 40px;
     }
+
+    #live-location {
+      padding: 15px;
+      font-size: 14px;
+      background: #f0f0f0;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
 
   <header>
     <button class="menu-btn" onclick="toggleMenu()">Menu</button>
-    <div class="logo">Arya Foods</div>
+    <div class="logo"></div>
   </header>
 
   <div class="sidebar" id="sidebar-menu">
     <a href="https://aryafoods.shop/foods.html">CILOK ISIAN GAJIH</a>
-    <a href="/konstruksi.html">KONSTRUKSI</a>
-    <a href="/ax.html">AX KAWASAKI LABS</a>
+    <a href="/ax.html"> NASUKA KAWASAKI LABS</a>
     <a href="https://aryafoods.shop/booster.html">BOOSTER SOCIAL MEDIA</a>
-    <a href="/tentang.html">TENTANG ARYA FOODS</a>
-    <a href="aryafoods.shop/pagetester.html">PAGE TESTER</a>
+    <a href="/tentang.html">TENTANG NASUKA FOODS</a>
+    <a href="/tentang.html">TEST NEW PAGES</a>
   </div>
 
   <div class="overlay" id="overlay" onclick="closeAll()"></div>
 
   <div class="content">
-    <h1 style="text-align:center;">Album Pelanggan</h1>
-    <p style="text-align:center;">Dihalaman ini kamu bisa upload keseruan kamu bersama cilok Nasuka Foods. Kirim foto kreatif kamu dan dapatkan gratis 5 pcs cilok serta eksistensi di sosial media!</p>
-
-    <!-- Uploadcare widget -->
+    <h1 style="text-align:center;">Selamat datang di NASUKA FOODS</h1>
+    <p style="text-align:center;">Cilok Isian Gajih – Gurih, pedas, dan meleleh di mulut! Yuk coba sekarang!</p>
+    
     <div style="text-align:center;">
-      <input type="hidden"
-             role="uploadcare-uploader"
-             data-public-key="eca4fb82f74db33566bc"
-             data-images-only
-             data-multiple="false"
-             data-clearable
-             />
-      <p>Upload foto kamu di sini 📷</p>
+      <a class="btn" href="https://wa.me/62859109819017" target="_blank">Pesan Sekarang via WhatsApp</a>
     </div>
 
-    <p class="section-title">Gratis Booster Sosial Media</p>
-    <img src="http://aryafoods.github.io/fototiktok.jpeg" alt="Promo TikTok">
-    <p>Beberapa konten kreator menggunakan jasa kami dalam membangun akun, salah satunya dengan boot fake follower, false likes, bahkan pada view live mereka.</p>
-    <p>Layanan ini gratis untuk pelanggan cilok isian gajih - Arya Foods</p>
-  </div>
+    <p class="section-title">Cilok Isian Gajih</p>
+    <img src="http://aryafoods.github.io/ciloksaji.jpeg" alt="Promo TikTok">
+    <p>Dengan resep istimewa dan rasa yang kuat, bumbu kacang murni</p>
+        
+    <p>Dikemas dengan kemasan istimewa</p>
+
+    <p class="section-title">Kemasan ekslusif</p>
+    <img src="http://aryafoods.github.io/paketcilok.jpg" alt="nasuka foods">
+    <p>1 box isi 100 pcs, harga Rp 100.000</p>
+    <p>✅ Bumbu kacang murni (terpisah)</p>
+    <p>✅ Free booster sosial media (tiktok) 1M viewers untuk 100 video kamu</p>
+    <p>✅ saus kecap cabe bubuk bumbu bubuk (terpisah)</p>
+    <p>✅ Untuk kualitas terbaik pesan 1 hari sebelumnya agar kami buatkan versi yang 100% fresh, angkat dari panci, kemas, antar</p>
+    
+    <p class="section-title">Jualan keliling</p>
+    <img src="http://aryafoods.github.io/ciloktvri.jpg" alt="nasuka foods">
+    <p>Siang menjelang sore kadang di gapura cibaduyut permai seberang TVRI</p>
+    
+    <img src="http://aryafoods.github.io/ciloknahjussalam.jpg" alt="nasuka foods">
+    <p>Kalau malam dari jam 20:00 - 24:00 kadang di depan masjid Nahjussalam - Ciparay Tengah</p>
+
+    <p class="section-title">Gratis booster sosial media</p>
+    <p>Apa kamu suka main sosmed, TikTok misalnya, ada free layanan rekayasa viewer system, jadi video-video TikTok kamu seolah banyak views-nya, 1M views untuk 100 video kamu. Klaim reward ini via WhatsApp.</p>
+    
+    <p class="section-title">Dibawah ini sample video yang Nasuka</p>
+    <div>
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@cilokisiangajih/video/7507262945236094214" data-video-id="7507262945236094214" style="max-width: 100%;">
+        <section>
+          <a target="_blank" title="@cilokisiangajih" href="https://www.tiktok.com/@cilokisiangajih">@cilokisiangajih</a>
+        </section>
+      </blockquote>
+      <script async src="https://www.tiktok.com/embed.js"></script>
+      <img src="arya//nas.github.ioods.site/officim.ltiktok.jpg" alt="nasuka foods">
+    </div>
+
+    <p>Layanan ini gratis untuk pelanggan Cilok Isian Gajih - Arya Foods</p>
+
+    <!-- Live Location -->
+    <div id="live-location">
+      Lokasi Anda: <span id="latitude">-</span>, <span id="longitude">-</span>
+    </div>
+
+  </div>    
 
   <footer>
     &copy; Arya Wiralodra 2025
@@ -169,6 +215,24 @@
     function closeAll() {
       document.getElementById('sidebar-menu').classList.remove('show');
       document.getElementById('overlay').classList.remove('show');
+    }
+
+    // Live Location Script
+    function updateLocation(position) {
+      document.getElementById("latitude").textContent = position.coords.latitude.toFixed(6);
+      document.getElementById("longitude").textContent = position.coords.longitude.toFixed(6);
+    }
+
+    function handleError(error) {
+      document.getElementById("live-location").textContent = "Gagal mendapatkan lokasi: " + error.message;
+    }
+
+    if (navigator.geolocation) {
+      navigator.geolocation.watchPosition(updateLocation, handleError, {
+        enableHighAccuracy: true
+      });
+    } else {
+      document.getElementById("live-location").textContent = "Geolocation tidak didukung browser ini.";
     }
   </script>
 
