@@ -154,11 +154,21 @@
   <!-- Main Content -->
   <main class="content">
     <h1 style="text-align:center;">Selamat datang di NASUKA FOODS</h1>
-    <p style="text-align:center;">Tes live lokasi</p>
+    <p style="text-align:center;">Lihat lokasi pengiriman kami secara langsung</p>
 
-    <!-- Live Location -->
-    <div id="live-location">
-      Lokasi Anda: <span id="latitude">-</span>, <span id="longitude">-</span>
+    <!-- Peta Lokasi -->
+    <div style="text-align:center; margin-top: 20px;">
+      <h3>Lokasi Pengiriman Saat Ini</h3>
+      <iframe
+        width="100%"
+        height="400"
+        style="border:0; border-radius: 10px;"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=-6.200000,106.816666&z=15&output=embed">
+      </iframe>
+      <p style="font-size: 14px; color: #666;">Klik/tap peta untuk membuka di Google Maps</p>
     </div>
   </main>
 
@@ -180,25 +190,6 @@
       document.getElementById('sidebar-menu').classList.remove('show');
       document.getElementById('overlay').classList.remove('show');
     }
-
-    function updateLocation(position) {
-      document.getElementById("latitude").textContent = position.coords.latitude.toFixed(6);
-      document.getElementById("longitude").textContent = position.coords.longitude.toFixed(6);
-    }
-
-    function handleError(error) {
-      document.getElementById("live-location").textContent = "Gagal mendapatkan lokasi: " + error.message;
-    }
-
-    window.onload = function () {
-      if (navigator.geolocation) {
-        navigator.geolocation.watchPosition(updateLocation, handleError, {
-          enableHighAccuracy: true
-        });
-      } else {
-        document.getElementById("live-location").textContent = "Geolocation tidak didukung oleh browser ini.";
-      }
-    };
   </script>
 
 </body>
