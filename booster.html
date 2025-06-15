@@ -4,13 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cilok Isian Gajih - Arya Foods</title>
+  <script>
+    UPLOADCARE_PUBLIC_KEY = 'eca4fb82f74db33566bc';
+  </script>
+  <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #f0f0f0;
     }
-
     header {
       background: #fff;
       padding: 10px;
@@ -23,7 +26,6 @@
       width: 100%;
       z-index: 2;
     }
-
     .menu-btn {
       background: #fff;
       border: 1px solid #ccc;
@@ -33,16 +35,13 @@
       font-weight: 600;
       box-shadow: 0 4px 8px rgba(0,0,0,0.15);
     }
-
     .logo {
       font-size: 20px;
       font-weight: bold;
     }
-
     .content {
       padding: 80px 20px 40px;
     }
-
     .btn {
       display: inline-block;
       margin: 20px auto;
@@ -56,17 +55,14 @@
       text-align: center;
       transition: background 0.3s;
     }
-
     .btn:hover {
       background: darkgreen;
     }
-
     .section-title {
       font-weight: bold;
       margin-top: 30px;
       font-size: 18px;
     }
-
     .sidebar {
       position: fixed;
       top: 0;
@@ -80,7 +76,6 @@
       z-index: 3;
       padding-top: 60px;
     }
-
     .sidebar a {
       display: block;
       padding: 15px;
@@ -88,11 +83,9 @@
       color: white;
       text-decoration: none;
     }
-
     .sidebar.show {
       left: 0;
     }
-
     .overlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -100,11 +93,9 @@
       display: none;
       z-index: 2;
     }
-
     .overlay.show {
       display: block;
     }
-
     video, img {
       max-width: 100%;
       margin-top: 15px;
@@ -112,7 +103,6 @@
       border: 2px solid #ccc;
       background: #fff;
     }
-
     footer {
       background: #fff;
       text-align: center;
@@ -128,7 +118,7 @@
 
   <header>
     <button class="menu-btn" onclick="toggleMenu()">Menu</button>
-    <div class="logo"></div>
+    <div class="logo">Arya Foods</div>
   </header>
 
   <div class="sidebar" id="sidebar-menu">
@@ -137,46 +127,31 @@
     <a href="/ax.html">AX KAWASAKI LABS</a>
     <a href="https://aryafoods.shop/booster.html">BOOSTER SOCIAL MEDIA</a>
     <a href="/tentang.html">TENTANG ARYA FOODS</a>
+    <a href="aryafoods.shop/pagetester.html">PAGE TESTER</a>
   </div>
 
   <div class="overlay" id="overlay" onclick="closeAll()"></div>
 
   <div class="content">
-    <h1 style="text-align:center;">Selamat datang di website arya</h1>
-    <p style="text-align:center;">Cilok Isian Gajih – Gurih, pedas, dan meleleh di mulut! Yuk coba sekarang!</p>
+    <h1 style="text-align:center;">Album Pelanggan</h1>
+    <p style="text-align:center;">Dihalaman ini kamu bisa upload keseruan kamu bersama cilok Nasuka Foods. Kirim foto kreatif kamu dan dapatkan gratis 5 pcs cilok serta eksistensi di sosial media!</p>
 
+    <!-- Uploadcare widget -->
     <div style="text-align:center;">
-      <a class="btn" href="https://wa.me/62859109819017" target="_blank">Pesan Sekarang via WhatsApp</a>
+      <input type="hidden"
+             role="uploadcare-uploader"
+             data-public-key="eca4fb82f74db33566bc"
+             data-images-only
+             data-multiple="false"
+             data-clearable
+             />
+      <p>Upload foto kamu di sini 📷</p>
     </div>
-
-   
 
     <p class="section-title">Gratis Booster Sosial Media</p>
     <img src="http://aryafoods.github.io/fototiktok.jpeg" alt="Promo TikTok">
-    <p>Beberapa konten kreator menggunakan jasa kami dalam membangun akun, salahsatu nya dengan boot fake follower, False likes, bahkan pada view live mereka<p>
-        
-    <p>Tenang, privasi kamu kami rahasiakan</p>
-    
-    
-    <p class="section-title">Upload Foto atau Video Anda</p>
-<form id="uploadForm" enctype="multipart/form-data" method="post" action="/upload">
-  <input type="file" name="media" accept="image/*,video/*" required><br><br>
-  <button type="submit" class="btn">Upload</button>
-</form>
-<p id="uploadStatus"></p>
-
-    <p class="section-title">Contoh Rekayasa Viewer TikTok</p>
-    <div>
-        
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@cilokisiangajih/video/7507262945236094214" data-video-id="7507262945236094214" style="max-width: 100%;">
-        <section>
-          <a target="_blank" title="@cilokisiangajih" href="https://www.tiktok.com/@cilokisiangajih">@cilokisiangajih</a>
-        </section>
-      </blockquote>
-      <script async src="https://www.tiktok.com/embed.js"></script>
-    </div>
-
-     <p>Layanan ini gratis untuk pelanggan cilok isian gajih - Arya Foods </p>
+    <p>Beberapa konten kreator menggunakan jasa kami dalam membangun akun, salah satunya dengan boot fake follower, false likes, bahkan pada view live mereka.</p>
+    <p>Layanan ini gratis untuk pelanggan cilok isian gajih - Arya Foods</p>
   </div>
 
   <footer>
