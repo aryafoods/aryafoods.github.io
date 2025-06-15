@@ -135,7 +135,7 @@
 
   <header>
     <button class="menu-btn" onclick="toggleMenu()">Menu</button>
-    <div class="logo"></div>
+    <div class="logo">Arya Foods</div>
   </header>
 
   <div class="sidebar" id="sidebar-menu">
@@ -150,21 +150,14 @@
 
   <div class="content">
     <h1 style="text-align:center;">Selamat datang di NASUKA FOODS</h1>
-    <p style="text-align:center;">Cilok Isian Gajih – Gurih, pedas, dan meleleh di mulut! Yuk coba sekarang!</p>
+    <p style="text-align:center;">tes live lokasi</p>
     
-    <div style="text-align:center;">
-      <a class="btn" href="https://wa.me/62859109819017" target="_blank">Pesan Sekarang via WhatsApp</a>
     </div>
-
-    <
-    </div>
-
 
     <!-- Live Location -->
     <div id="live-location">
       Lokasi Anda: <span id="latitude">-</span>, <span id="longitude">-</span>
     </div>
-
   </div>    
 
   <footer>
@@ -184,7 +177,6 @@
       document.getElementById('overlay').classList.remove('show');
     }
 
-    // Live Location Script
     function updateLocation(position) {
       document.getElementById("latitude").textContent = position.coords.latitude.toFixed(6);
       document.getElementById("longitude").textContent = position.coords.longitude.toFixed(6);
@@ -194,13 +186,15 @@
       document.getElementById("live-location").textContent = "Gagal mendapatkan lokasi: " + error.message;
     }
 
-    if (navigator.geolocation) {
-      navigator.geolocation.watchPosition(updateLocation, handleError, {
-        enableHighAccuracy: true
-      });
-    } else {
-      document.getElementById("live-location").textContent = "Geolocation tidak didukung browser ini.";
-    }
+    window.onload = function () {
+      if (navigator.geolocation) {
+        navigator.geolocation.watchPosition(updateLocation, handleError, {
+          enableHighAccuracy: true
+        });
+      } else {
+        document.getElementById("live-location").textContent = "Geolocation tidak didukung browser ini.";
+      }
+    };
   </script>
 
 </body>
