@@ -22,44 +22,36 @@
     let map, marker;
 
     function initMap() {
-      fetchLocation(); // panggil pertama kali
-      setInterval(fetchLocation, 5000); // update terus
+      fetchLocation(); // pertama kali
+      setInterval(fetchLocation, 5000); // setiap 5 detik
     }
 
     async function fetchLocation() {
       try {
-        const res = await fetch("https://script.google.com/macros/s/AKfycbxGcohhXoKvaRzkzWahMb_ng3htktWJLeBFep8rvGXmIETl20ooNNdeta5OWV3awJ_jbQ/exec");
+        const res = await fetch("https://script.google.com/macros/s/AKfycbABC1234567890xyz/exec"); // GANTI DENGAN LINK ANDA
         const data = await res.json();
+        if (!data.latitude || !data.longitude) throw new Error("Data tidak lengkap");
 
-        if (!data.latitude || !data.longitude) throw new Error("Data kosong");
-
-        const pos = {
-          lat: parseFloat(data.latitude),
-          lng: parseFloat(data.longitude)
-        };
+        const pos = { lat: parseFloat(data.latitude), lng: parseFloat(data.longitude) };
 
         if (!map) {
           map = new google.maps.Map(document.getElementById("map"), {
             zoom: 16,
             center: pos,
           });
-          marker = new google.maps.Marker({
-            position: pos,
-            map: map,
-            title: "Lokasi Penjual",
-          });
+          marker = new google.maps.Marker({ position: pos, map: map, title: "Lokasi Penjual" });
         } else {
           marker.setPosition(pos);
           map.setCenter(pos);
         }
       } catch (e) {
         document.getElementById("map").innerHTML = "Gagal memuat lokasi penjual.";
-        console.error("Error ambil lokasi penjual:", e);
+        console.error(e);
       }
     }
   </script>
 
-  <!-- ✅ Sudah pakai callback=initMap -->
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1dnYM4UGOWn88YBl1k8JhJNmM5R2bAZk&callback=initMap"></script>
+  <!-- Ganti API Key Anda -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap"></script>
 </body>
 </html>
