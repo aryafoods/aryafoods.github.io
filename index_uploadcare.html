@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cilok Isian Gajih - Arya Foods</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+    }
+
+    header {
+      background: #fff;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 2;
+    }
+
+    .menu-btn {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      padding: 6px 15px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .content {
+      padding: 80px 20px 40px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 20px auto;
+      padding: 12px 20px;
+      background: green;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 25px;
+      text-decoration: none;
+      text-align: center;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: darkgreen;
+    }
+
+    .section-title {
+      font-weight: bold;
+      margin-top: 30px;
+      font-size: 18px;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background: #333;
+      color: white;
+      overflow-y: auto;
+      transition: all 0.3s ease;
+      z-index: 3;
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 15px;
+      border-bottom: 1px solid #444;
+      color: white;
+      text-decoration: none;
+    }
+
+    .sidebar.show {
+      left: 0;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      z-index: 2;
+    }
+
+    .overlay.show {
+      display: block;
+    }
+
+    video, img {
+      max-width: 100%;
+      margin-top: 15px;
+      border-radius: 10px;
+      border: 2px solid #ccc;
+      background: #fff;
+    }
+
+    footer {
+      background: #fff;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      color: #555;
+      border-top: 1px solid #ccc;
+      margin-top: 40px;
+    }
+  </style>
+  <script>
+    UPLOADCARE_PUBLIC_KEY = 'demopublickey'; // Ganti dengan Public API Key kamu
+  </script>
+  <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
+</head>
+<body>
+
+  <header>
+    <button class="menu-btn" onclick="toggleMenu()">Menu</button>
+    <div class="logo"></div>
+  </header>
+
+  <div class="sidebar" id="sidebar-menu">
+    <a href="https://aryafoods.shop/foods.html">CILOK ISIAN GAJIH</a>
+    <a href="/konstruksi.html">KONSTRUKSI</a>
+    <a href="/ax.html">AX KAWASAKI LABS</a>
+    <a href="https://aryafoods.shop/booster.html">BOOSTER SOCIAL MEDIA</a>
+    <a href="/tentang.html">TENTANG ARYA FOODS</a>
+  </div>
+
+  <div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+  <div class="content">
+    <h1 style="text-align:center;">Selamat datang di website arya</h1>
+    <p style="text-align:center;">Cilok Isian Gajih – Gurih, pedas, dan meleleh di mulut! Yuk coba sekarang!</p>
+
+    <div style="text-align:center;">
+      <a class="btn" href="https://wa.me/62859109819017" target="_blank">Pesan Sekarang via WhatsApp</a>
+    </div>
+
+    <p class="section-title">Upload Gambar Anda</p>
+    <form id="uploadForm">
+      <input type="hidden" role="uploadcare-uploader" name="my_file" data-clearable />
+      <br><br>
+      <button class="btn" type="submit">Tampilkan Gambar</button>
+    </form>
+
+    <div id="result"></div>
+
+    <p class="section-title">Gratis Booster Sosial Media</p>
+    <img src="http://aryafoods.github.io/fototiktok.jpeg" alt="Promo TikTok">
+    <p>Beberapa konten kreator menggunakan jasa kami dalam membangun akun, salahsatu nya dengan boot fake follower, False likes, bahkan pada view live mereka</p>
+    <p>Tenang, privasi kamu kami rahasiakan</p>
+
+    <p class="section-title">Contoh Rekayasa Viewer TikTok</p>
+    <div>
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@cilokisiangajih/video/7507262945236094214" data-video-id="7507262945236094214" style="max-width: 100%;">
+        <section>
+          <a target="_blank" title="@cilokisiangajih" href="https://www.tiktok.com/@cilokisiangajih">@cilokisiangajih</a>
+        </section>
+      </blockquote>
+      <script async src="https://www.tiktok.com/embed.js"></script>
+    </div>
+
+    <p>Layanan ini gratis untuk pelanggan cilok isian gajih - Arya Foods </p>
+  </div>
+
+  <footer>
+    &copy; Arya Wiralodra 2025
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('sidebar-menu');
+      const overlay = document.getElementById('overlay');
+      menu.classList.toggle('show');
+      overlay.classList.toggle('show');
+    }
+
+    function closeAll() {
+      document.getElementById('sidebar-menu').classList.remove('show');
+      document.getElementById('overlay').classList.remove('show');
+    }
+
+    document.getElementById('uploadForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const widget = uploadcare.Widget('[role=uploadcare-uploader]');
+      const file = widget.value();
+
+      if (file) {
+        document.getElementById('result').innerHTML = `
+          <p>Gambar berhasil diupload:</p>
+          <img src="${file}" alt="Gambar hasil upload">
+          <p>URL: <a href="${file}" target="_blank">${file}</a></p>
+        `;
+      } else {
+        alert("Silakan upload gambar terlebih dahulu.");
+      }
+    });
+  </script>
+
+</body>
+</html>
