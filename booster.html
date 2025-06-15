@@ -12,22 +12,10 @@
       border-radius: 10px;
       border: 2px solid #ccc;
     }
-
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background: #f9f9f9;
-      padding: 20px;
-    }
-
-    h1 {
-      margin-top: 40px;
-      color: #333;
-    }
   </style>
 </head>
 <body>
-  <h1>Lokasi Penjual Sekarang</h1>
+  <h1 style="text-align:center;">Lokasi Penjual Sekarang</h1>
   <div id="map">Memuat peta...</div>
 
   <script>
@@ -37,9 +25,14 @@
       try {
         const res = await fetch("https://script.google.com/macros/s/AKfycbxGcohhXoKvaRzkzWahMb_ng3htktWJLeBFep8rvGXmIETl20ooNNdeta5OWV3awJ_jbQ/exec");
         const data = await res.json();
-        const { latitude, longitude } = data;
 
-        const pos = { lat: parseFloat(latitude), lng: parseFloat(longitude) };
+        // Cek apakah data punya latitude dan longitude
+        if (!data.latitude || !data.longitude) throw new Error("Data kosong");
+
+        const pos = {
+          lat: parseFloat(data.latitude),
+          lng: parseFloat(data.longitude)
+        };
 
         if (!map) {
           map = new google.maps.Map(document.getElementById("map"), {
@@ -57,16 +50,15 @@
         }
       } catch (e) {
         document.getElementById("map").innerHTML = "Gagal memuat lokasi penjual.";
+        console.error("Error ambil lokasi penjual:", e);
       }
     }
 
-    function initMap() {
-      fetchLocation();
-      setInterval(fetchLocation, 5000);
-    }
+    setInterval(fetchLocation, 5000); // Update tiap 5 detik
+    fetchLocation(); // Jalankan saat pertama
   </script>
 
-  <!-- Gunakan API Key kamu -->
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAp-WwDRUeIAtMgIFLxOZDUK0mU1WlNjxI&callback=initMap"></script>
+  <!-- GANTI API KEY DENGAN MILIK ANDA -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1dnYM4UGOWn88YBl1k8JhJNmM5R2bAZk"></script>
 </body>
 </html>
