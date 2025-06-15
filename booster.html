@@ -20,6 +20,7 @@
 
   <script>
     let map, marker;
+
     function initMap() {
       fetchLocation();
       setInterval(fetchLocation, 5000);
@@ -27,8 +28,9 @@
 
     async function fetchLocation() {
       try {
-        const res = await fetch("GANTI_DENGAN_LINK_GAS"); // <--- GANTI
+        const res = await fetch("https://script.google.com/macros/s/AKfycbxGcohhXoKvaRzkzWahMb_ng3htktWJLeBFep8rvGXmIETl20ooNNdeta5OWV3awJ_jbQ/exec");
         const data = await res.json();
+
         if (!data.latitude || !data.longitude) throw new Error("Data tidak valid");
 
         const pos = { lat: parseFloat(data.latitude), lng: parseFloat(data.longitude) };
@@ -45,12 +47,11 @@
         }
       } catch (e) {
         document.getElementById("map").innerText = "Gagal memuat lokasi penjual.";
-        console.error(e);
+        console.error("Fetch error:", e);
       }
     }
   </script>
 
-  <!-- Ganti API key Anda di sini -->
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=API_KEY_ANDA&callback=initMap"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1dnYM4UGOWn88YBl1k8JhJNmM5R2bAZk&callback=initMap"></script>
 </body>
 </html>
