@@ -12,10 +12,22 @@
       border-radius: 10px;
       border: 2px solid #ccc;
     }
+
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f9f9f9;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-top: 40px;
+      color: #333;
+    }
   </style>
 </head>
 <body>
-  <h1 style="text-align:center;">Lokasi Penjual Sekarang</h1>
+  <h1>Lokasi Penjual Sekarang</h1>
   <div id="map">Memuat peta...</div>
 
   <script>
@@ -48,11 +60,13 @@
       }
     }
 
-    setInterval(fetchLocation, 5000); // update setiap 5 detik
-    fetchLocation(); // jalankan pertama kali
+    function initMap() {
+      fetchLocation();
+      setInterval(fetchLocation, 5000);
+    }
   </script>
 
-  <!-- Ganti YOUR_API_KEY dengan API key kamu -->
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=fetchLocation"></script>
+  <!-- Gunakan API Key kamu -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAp-WwDRUeIAtMgIFLxOZDUK0mU1WlNjxI&callback=initMap"></script>
 </body>
 </html>
