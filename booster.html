@@ -197,7 +197,25 @@
     <div id="live-location">
       Lokasi Anda: <span id="latitude">-</span>, <span id="longitude">-</span>
     </div>
+<div id="map"></div>
 
+<script>
+navigator.geolocation.getCurrentPosition(function(position) {
+  var lat = position.coords.latitude;
+  var lon = position.coords.longitude;
+
+  // Menampilkan koordinat teks
+  document.body.insertAdjacentHTML("beforeend", "<p>Lokasi Anda: " + lat + ", " + lon + "</p>");
+
+  // Menampilkan peta
+  var iframe = document.createElement("iframe");
+  iframe.width = "100%";
+  iframe.height = "300";
+  iframe.style.border = "0";
+  iframe.src = `https://maps.google.com/maps?q=${lat},${lon}&z=15&output=embed`;
+  document.getElementById("map").appendChild(iframe);
+});
+</script>
   </div>    
 
   <footer>
