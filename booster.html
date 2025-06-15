@@ -113,14 +113,6 @@
       background: #fff;
     }
 
-    iframe {
-      width: 100%;
-      height: 400px;
-      border: none;
-      border-radius: 10px;
-      margin-top: 20px;
-    }
-
     footer {
       background: #fff;
       text-align: center;
@@ -136,6 +128,13 @@
       font-size: 14px;
       background: #f0f0f0;
       margin-top: 20px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 350px;
+      border: 0;
+      margin-top: 15px;
     }
   </style>
 </head>
@@ -164,10 +163,8 @@
     <h1 style="text-align:center;">Selamat datang di NASUKA FOODS</h1>
     <p style="text-align:center;">Tes live lokasi</p>
 
-    <!-- Live Location Embed -->
     <div id="live-location">Mendeteksi lokasi Anda...</div>
-    <iframe id="map" src=""></iframe>
-
+    <iframe id="map-frame" src="" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </main>
 
   <!-- Footer -->
@@ -189,26 +186,28 @@
       document.getElementById('overlay').classList.remove('show');
     }
 
-    // Lokasi Real-Time
-    function showMap(latitude, longitude) {
-      const mapSrc = `https://www.google.com/maps?q=${latitude},${longitude}&z=15&output=embed`;
-      document.getElementById("map").src = mapSrc;
-      document.getElementById("live-location").textContent = `Lokasi Anda: ${latitude.toFixed(5)}, ${longitude.toFixed(5)}`;
+    function updateLocation(position) {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+
+      document.getElementById("live-location").textContent = `Lokasi Anda: (${lat.toFixed(6)}, ${lon.toFixed(6)})`;
+      document.getElementById("map-frame").src = `https://www.google.com/maps?q=${lat},${lon}&z=17&output=embed`;
     }
 
-    function showError(error) {
-      document.getElementById("live-location").textContent = "Gagal mendeteksi lokasi: " + error.message;
+    function handleError(error) {
+      document.getElementById("live-location").textContent = "Gagal mendapatkan lokasi: " + error.message;
     }
 
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((pos) => {
-        showMap(pos.coords.latitude, pos.coords.longitude);
-      }, showError, {
-        enableHighAccuracy: true
-      });
-    } else {
-      document.getElementById("live-location").textContent = "Browser Anda tidak mendukung geolocation.";
-    }
+    window.onload = function () {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(updateLocation, handleError, {
+          enableHighAccuracy: true,
+          timeout: 10000
+        });
+      } else {
+        document.getElementById("live-location").textContent = "Geolocation tidak didukung oleh browser ini.";
+      }
+    };
   </script>
 
 </body>
