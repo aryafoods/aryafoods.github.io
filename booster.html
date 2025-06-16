@@ -1,57 +1,121 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Live Lokasi Penjual - Arya Foods</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TikTok Style Video</title>
   <style>
-    #map {
-      height: 400px;
+    body {
+      margin: 0;
+      background: black;
+      color: white;
+      font-family: sans-serif;
+      overflow: hidden;
+    }
+    .top-bar {
+      position: absolute;
+      top: 10px;
       width: 100%;
-      margin-top: 20px;
-      border-radius: 10px;
-      border: 2px solid #ccc;
+      text-align: center;
+      z-index: 10;
+    }
+    .top-bar span {
+      margin: 0 10px;
+      font-weight: bold;
+      opacity: 0.7;
+    }
+    .top-bar .active {
+      border-bottom: 2px solid white;
+      opacity: 1;
+    }
+    video {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      background: black;
+    }
+    .info {
+      position: absolute;
+      bottom: 100px;
+      left: 10px;
+    }
+    .info .location {
+      font-size: 12px;
+      color: #ccc;
+    }
+    .info .username {
+      font-weight: bold;
+    }
+    .info .desc {
+      font-size: 14px;
+      margin-top: 5px;
+    }
+    .info .music {
+      font-size: 12px;
+      color: #ffbb00;
+    }
+    .sidebar {
+      position: absolute;
+      bottom: 100px;
+      right: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .sidebar div {
+      margin: 10px 0;
+      font-size: 12px;
+    }
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 0;
+      font-size: 12px;
+    }
+    .bottom-bar div {
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <h1 style="text-align:center;">Lokasi Penjual Sekarang</h1>
-  <div id="map">Memuat peta...</div>
 
-  <script>
-    let map, marker;
+  <div class="top-bar">
+    <span>Following</span>
+    <span class="active">For You</span>
+  </div>
 
-    function initMap() {
-      fetchLocation();
-      setInterval(fetchLocation, 5000);
-    }
+  <video autoplay muted playsinline loop id="myVideo">
+    <source src="https://aryafoods.shop/videosakti.mp4" type="video/mp4">
+    Browser tidak mendukung video.
+  </video>
 
-    async function fetchLocation() {
-      try {
-        const res = await fetch("https://script.google.com/macros/s/AKfycbxGcohhXoKvaRzkzWahMb_ng3htktWJLeBFep8rvGXmIETl20ooNNdeta5OWV3awJ_jbQ/exec");
-        const data = await res.json();
+  <div class="info">
+    <div class="location">📍 ICE BSD Hall 5 (Gate) | Tangerang</div>
+    <div class="username">@itssmycandyss🍭</div>
+    <div class="desc">biduan YG 😭🙈 #pharita #asa #babymonster</div>
+    <div class="music">🎵 suara asli - ra 🦋</div>
+  </div>
 
-        if (!data.latitude || !data.longitude) throw new Error("Data tidak valid");
+  <div class="sidebar">
+    <div>❤️ 193.8K</div>
+    <div>💬 917</div>
+    <div>🔗 Share</div>
+  </div>
 
-        const pos = { lat: parseFloat(data.latitude), lng: parseFloat(data.longitude) };
+  <div class="bottom-bar">
+    <div>🏠<br>Home</div>
+    <div>🔍<br>Discover</div>
+    <div>➕<br>Upload</div>
+    <div>📨<br>Inbox</div>
+    <div>👤<br>Profile</div>
+  </div>
 
-        if (!map) {
-          map = new google.maps.Map(document.getElementById("map"), {
-            center: pos,
-            zoom: 16,
-          });
-          marker = new google.maps.Marker({ position: pos, map: map });
-        } else {
-          marker.setPosition(pos);
-          map.setCenter(pos);
-        }
-      } catch (e) {
-        document.getElementById("map").innerText = "Gagal memuat lokasi penjual.";
-        console.error("Fetch error:", e);
-      }
-    }
-  </script>
-
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1dnYM4UGOWn88YBl1k8JhJNmM5R2bAZk&callback=initMap"></script>
 </body>
 </html>
