@@ -1,230 +1,129 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cilok Isian Gajih - Arya Foods</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Artikel Nasuka Wiki</title>
   <style>
     body {
+      font-family: "Georgia", serif;
+      background-color: #f8f9fa;
+      color: #202122;
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f0f0f0;
+      padding: 0;
     }
-
     header {
-      background: #fff;
-      padding: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 2;
+      background-color: #ffffff;
+      border-bottom: 1px solid #a2a9b1;
+      padding: 10px 20px;
     }
-
-    .menu-btn {
-      background: #fff;
-      border: 1px solid #ccc;
-      border-radius: 25px;
-      padding: 6px 15px;
-      cursor: pointer;
-      font-weight: 600;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    header h1 {
+      margin: 0;
+      font-size: 28px;
     }
-
-    .logo {
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .content {
-      padding: 80px 20px 40px;
-    }
-
-    .btn {
-      display: inline-block;
-      margin: 20px auto;
-      padding: 12px 20px;
-      background: green;
-      color: white;
-      font-weight: bold;
-      border: none;
-      border-radius: 25px;
-      text-decoration: none;
-      text-align: center;
-      transition: background 0.3s;
-    }
-
-    .btn:hover {
-      background: darkgreen;
-    }
-
-    .section-title {
-      font-weight: bold;
-      margin-top: 30px;
-      font-size: 18px;
-    }
-
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: -250px;
-      width: 250px;
-      height: 100%;
-      background: #333;
-      color: white;
-      overflow-y: auto;
-      transition: all 0.3s ease;
-      z-index: 3;
-      padding-top: 60px;
-    }
-
-    .sidebar a {
-      display: block;
-      padding: 15px;
-      border-bottom: 1px solid #444;
-      color: white;
-      text-decoration: none;
-    }
-
-    .sidebar.show {
-      left: 0;
-    }
-
-    .overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.5);
-      display: none;
-      z-index: 2;
-    }
-
-    .overlay.show {
-      display: block;
-    }
-
-    video, img {
-      max-width: 100%;
-      margin-top: 15px;
-      border-radius: 10px;
-      border: 2px solid #ccc;
-      background: #fff;
-    }
-
-    footer {
-      background: #fff;
-      text-align: center;
-      padding: 15px;
+    nav {
+      background-color: #f0f0f0;
+      padding: 10px 20px;
       font-size: 14px;
+    }
+    main {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+    }
+    h2 {
+      border-bottom: 1px solid #a2a9b1;
+      padding-bottom: 5px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
       color: #555;
-      border-top: 1px solid #ccc;
-      margin-top: 40px;
+    }
+    a {
+      color: #0645ad;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    img.article-image {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 20px auto;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <button class="menu-btn" onclick="toggleMenu()">Menu</button>
-    <div class="logo"></div>
+    <h1>Arya Wiki</h1>
   </header>
 
-  <div class="sidebar" id="sidebar-menu">
-    <a href="https://aryafoods.shop/foods.html">CILOK ISIAN GAJIH</a>
-    <a href="/ax.html"> NASUKA KAWASAKI LABS</a>
-    <a href="https://aryafoods.shop/booster.html">BOOSTER SOCIAL MEDIA</a>
-    <a href="/tentang.html">TENTANG NASUKA FOODS</a>
-        <a href="/tentang.html">TEST NEW PAGES</a>
-  </div>
+  <nav>
+    <a href="#">Barang bukti</a> |
+    <a href="#">Kontak berkaitan</a> |
+    <a href="#">TKP</a> |
+    <a href="#">Sosial media</a>
+  </nav>
 
-  <div class="overlay" id="overlay" onclick="closeAll()"></div>
+  <main>
+    <h2>Pencuri peratan proyek dan matrial kantor</h2>
+    <p>
+      <b>Artikel</b></i>. 
+      Kasus pencurian
+    </p>
 
-  <div class="content">
-    <h1 style="text-align:center;">Selamat datang di NASUKA FOODS</h1>
-    <p style="text-align:center;">Cilok Isian Gajih – Gurih, pedas, dan meleleh di mulut! Yuk coba sekarang!</p>
+    <!-- Gambar sebelum subjudul -->
+    <img src="https://aryafoods.shop/fotomaling.jpg" alt="Contoh Gambar" class="article-image">
 
-    <div style="text-align:center;">
-      <a class="btn" href="https://wa.me/62859109819017" target="_blank">Pesan Sekarang via WhatsApp</a>
-    </div>
+    <h3>Kronologi</h3>
+    <p>
+      Kedua pelaku ke Bandung untuk bekerja, Ongkos 200.000 saya kasih.
+    </p>
+    <p>
+      Kerja terhitung aktif 3 hari. Menurut prosedur proyek pada umumnya gajian hari Sabtu. Tetapi hari Jumat tanggal 6 Juni 2025 sekitar pukul 07:00 menurut saksi mata, kedua pelaku keluar dari kontrakan Cisaranten membawa ransel dan karung, yang mana diduga membawa kabur semua peralatan tukang dan material kantor.
+    </p>
+    <p>
+      Sebelumnya, malam Jumat sekitar pukul 20:00 saya pergi ke Cibaduyut untuk suatu keperluan. Pada hari Jumat saya ke kontrakan Cisaganten dan menemukan kontrakan sudah kosong, yang mana semua alat-alat kerja dan material kantor diangkut tanpa izin
+    </p>
 
-   
+    <h3>Data pelaku</h3>
+    <ul>
+      <li>Ujang Chaerudin</li>
+      <li>Bagus Irwan Khalifi</li>
+      <p>Berdasarkan berbagai sumber valid</p>
+    </ul>
 
-    <p class="section-title">Cilok Isian Gajih</p>
-    <img src="http://aryafoods.github.io/ciloksaji.jpeg" alt="Promo TikTok">
-    <p>Dengan resep istimewa dan rasa yang kuat, bumbu kacang murni  <p>
-        
-    <p>Dikemas dengan kemasan istimewa</p>
+    <h3>Dasar hukum</h3>
+    <ul>
+      <li>
+        <strong>Pasal 362 KUHP:</strong> Tindak pidana pencurian  
+        <p>Barang siapa mengambil barang sesuatu, yang seluruhnya atau sebagian kepunyaan orang lain, dengan maksud untuk dimiliki secara melawan hukum, dihukum karena pencurian.</p>
+      </li>
+      <li>
+        <strong>Pasal 368 KUHP:</strong> Pemerasan  
+        <p>Barang siapa dengan maksud untuk menguntungkan diri sendiri atau orang lain secara melawan hukum, memaksa orang lain dengan kekerasan atau ancaman kekerasan untuk memberikan sesuatu barang, yang seluruhnya atau sebagian adalah milik orang itu sendiri atau orang lain.</p>
+      </li>
+    </ul>
 
+    <h3>Saksi dan bukti</h3>
+    <ul>
+      <li>Barang barang pelaku yang tertingal di TKP</li>
+      <li>Foto foto pelaku & Barang tertinggal tersebut</li>
+      <li>Screenshoot bukti transfer & Ewallet</li>
+      <li>Screenshoot percakapan whatsapp</li>
+      <li>Tawaran penyelesaian baik baik via telepon pelaku dan salahsatu unit reserse kriminal umum Polsek Gede Bage - Bandung</li>
+    </ul>
 
-
-    <p class="section-title">Kemasan ekslusif</p>
-    <img src="http://aryafoods.github.io/paketcilok.jpg" alt="nasuka foods">
-    <p>1 box isi 100 pcs, harga Rp 100.000<p>
-        <p>✅ Bumbu kacang murni (terpisah)</p>
-        <p>✅ Free booster sosial media (tiktok) 1.M viewers untuk 100 video kamu</p>
-        <p>✅ saus kecap cabe bubuk bumbu bubuk (terpisah)</p>
-        <p>✅ Untuk kualitas terbaik pesan 1 hari sebelum nya agar kami buatkan versi yang 100% fresh, angkat dari panci, kemas, antar</p>
-            <p class="section-title">Jualan keliling</p>
-        <img src="http://aryafoods.github.io/ciloktvri.jpg" alt="nasuka foods">
-    <p>Siang menjelang sore kadang di gapura cibaduyut permai seberang Tvri</p>
-    
-          <img src="http://aryafoods.github.io/ciloknahjussalam.jpg" alt="nasuka foods">
-          <p>Kalau malam dari jam 20:00 - 24:00 kadang di depan masjid nahjussalam - ciparay tengah</p>
-    
-    
-    <html lang="in">
-    <head>
-        <meta charset="UTF-8">
-        <title>Judul halaman</title>
-    </head>
-    <body>
-       
-    </body>
-    </html></p>
-
-
-    <p class="section-title">Gratis booster sosial media</p>
-    <p>Apa kamu suka maen sosmed, tiktok misalnya, ada free layanan rekayasa viewer system, jadi video video tiktok kamu seolah banyak views nya, 1.M views untuk 100 video kamu, klaim reward ini via whatsapp</p>
-    
-    
-    <p class="section-title">Dibawah ini sample video yang nasuka</p>
-    <div>
-        
-        
-        
-        
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@cilokisiangajih/video/7507262945236094214" data-video-id="7507262945236094214" style="max-width: 100%;">
-        <section>
-          <a target="_blank" title="@cilokisiangajih" href="https://www.tiktok.com/@cilokisiangajih">@cilokisiangajih</a>
-        </section>
-      </blockquote>
-      <script async src="https://www.tiktok.com/embed.js"></script>
-              <img src="http://aryafoods.github.io/officialtiktok.jpg" alt="nasuka foods">
-      
-    </div>
-
-     <p>Layanan ini gratis untuk pelanggan cilok isian gajih - Arya Foods </p>
-  </div>    
+  </main>
 
   <footer>
-    &copy; Arya Wiralodra 2025
+    Artikel ini dicatat berdasarkan fakta dilapangan<a href="ht://creativecommons.org/licenses/by-sa/3.0/" target="_blank">Lisensi CC BY-SA 3.0</a> | &copy; 2025 Arya Wiki
   </footer>
-
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('sidebar-menu');
-      const overlay = document.getElementById('overlay');
-      menu.classList.toggle('show');
-      overlay.classList.toggle('show');
-    }
-
-    function closeAll() {
-      document.getElementById('sidebar-menu').classList.remove('show');
-      document.getElementById('overlay').classList.remove('show');
-    }
-  </script>
 
 </body>
 </html>
