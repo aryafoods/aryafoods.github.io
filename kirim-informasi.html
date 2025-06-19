@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Laporan</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      background-color: #28a745;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      background-color: #999;
+      cursor: not-allowed;
+    }
+
+    #preview {
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    #preview img {
+      max-width: 100%;
+      max-height: 300px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    #status {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Form Laporan</h2>
+    <form id="laporanForm">
+      <label>Nama:</label>
+      <input type="text" name="nama" required>
+
+      <label>Handphone:</label>
+      <input type="tel" name="handphone" id="handphone" required pattern="[0-9]*" inputmode="numeric">
+
+      <label>Laporan:</label>
+      <textarea name="laporan" rows="4" required></textarea>
+
+      <label>Upload Foto:</label>
+      <input type="file" id="foto" accept="image/*" required>
+
+      <div id="preview"><p><i>Preview Foto Akan Muncul di Sini</i></p></div>
+
+      <button type="submit" id="submitBtn">Kirim Laporan</button>
+    </form>
+
+    <p id="status"></p>
+  </div>
+
+  <script>
+    const fotoInput = document.getElementById('foto');
+    const previewDiv = document.getElementById('preview');
+    const submitBtn = document.getElementById('submitBtn');
+    const statusText = document.getElementById('status');
+    const handphoneInput = document.getElementById('handphone');
+
+    handphoneInput.addEventListener('input', function() {
+      this.value = this.value.replace(/\D/g, '');
+    });
+
+    fotoInput.addEventListener('change', function() {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          previewDiv.innerHTML = `<img src="${e.target.result}" alt="Preview Foto">`;
+        };
+        reader.readAsDataURL(file);
+      } else {
+        previewDiv.innerHTML = "<p><i>Preview Foto Akan Muncul di Sini</i></p>";
+      }
+    });
+
+    document.getElementById('laporanForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const file = fotoInput.files[0];
+
+      if (!file) {
+        alert("Silakan pilih foto.");
+        return;
+      }
+
+      submitBtn.disabled = true;
+      statusText.textContent = "Mengirim laporan...";
+
+      const reader = new FileReader();
+      reader.onloadend = function() {
+        const base64Foto = reader.result.split(',')[1];
+
+        const data = new URLSearchParams();
+        data.append("nama", form.nama.value);
+        data.append("handphone", form.handphone.value);
+        data.append("laporan", form.laporan.value);
+        data.append("foto", base64Foto);
+
+        fetch("https://script.google.com/macros/s/AKfycbzwskcSwGQBINGwJARSXqgvX8tz4qjvtd-znnRqjwipgE3C7pvQi_3I1hOoWnVB0IX_/exec", {
+          method: "POST",
+          body: data
+        })
+        .then(res => res.text())
+        .then(text => {
+          statusText.textContent = text;
+          form.reset();
+          previewDiv.innerHTML = "<p><i>Preview Foto Akan Muncul di Sini</i></p>";
+          submitBtn.disabled = false;
+        })
+        .catch(err => {
+          statusText.textContent = "Gagal mengirim: " + err;
+          submitBtn.disabled = false;
+        });
+      };
+
+      reader.readAsDataURL(file);
+    });
+  </script>
+</body>
+</html>
