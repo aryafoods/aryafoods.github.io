@@ -83,23 +83,23 @@
 </head>
 <body>
   <div class="container">
-    <h2>Form Laporan</h2>
+    <h2>Form Informan</h2>
     <form id="laporanForm">
       <label>Nama:</label>
       <input type="text" name="nama" required>
 
-      <label>Handphone:</label>
-      <input type="tel" name="handphone" id="handphone" required pattern="[0-9]*" inputmode="numeric">
+      <label>Handphone: ( boleh dikosongkan )</label>
+      <input type="te name="handphone" id="handphone" inputmode="numeric">
 
-      <label>Laporan:</label>
+      <label>Informasi :</label>
       <textarea name="laporan" rows="4" required></textarea>
 
       <label>Upload Foto:</label>
       <input type="file" id="foto" accept="image/*" required>
 
-      <div id="preview"><p><i>Preview Foto Akan Muncul di Sini</i></p></div>
+      <div id="preview"><p><i>Kasus: Ujang Chaerudin & Bagus Irwan Khalifi</i></p></div>
 
-      <button type="submit" id="submitBtn">Kirim Laporan</button>
+      <button type="submit" id="submitBtn">Kirim Informasi</button>
     </form>
 
     <p id="status"></p>
@@ -141,7 +141,7 @@
       }
 
       submitBtn.disabled = true;
-      statusText.textContent = "Mengirim laporan...";
+      statusText.textContent = "Sedang Mengirim Informasi.....";
 
       const reader = new FileReader();
       reader.onloadend = function() {
@@ -161,7 +161,7 @@
         .then(text => {
           statusText.textContent = text;
           form.reset();
-          previewDiv.innerHTML = "<p><i>Preview Foto Akan Muncul di Sini</i></p>";
+          previewDiv.innerHTML = "<p><i>Terima kasih <p>Informasi sudah kami terima</i></p>";
           submitBtn.disabled = false;
         })
         .catch(err => {
