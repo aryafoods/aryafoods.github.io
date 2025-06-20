@@ -45,6 +45,7 @@
     a {
       color: #0645ad;
       text-decoration: none;
+      cursor: pointer;
     }
     a:hover {
       text-decoration: underline;
@@ -59,7 +60,16 @@
       color: #202122;
       font-style: italic;
     }
+    .hidden-content {
+      display: none;
+    }
   </style>
+  <script>
+    function toggle(id) {
+      const content = document.getElementById(id);
+      content.style.display = (content.style.display === "none") ? "block" : "none";
+    }
+  </script>
 </head>
 <body>
 
@@ -77,20 +87,16 @@
   <main>
     <h2>Ujang Chaerudin</h2>
     <h2>Bagus Irwan Khalifi</h2>
-    <p>
-      <b>Artikel : </b></i> Aksi pencurian, penggelapan, pemerasan, penipuan
-    </p>
+    <p><b>Artikel:</b> Pelaku aksi pencurian, penggelapan, pemerasan, penipuan</p>
 
     <img src="https://aryafoods.shop/fotomaling.jpg" alt="Contoh Gambar" class="article-image">
 
-    <h3>Kronologi</h3>
-    <p>Kedua pelaku ke Bandung untuk bekerja
-    <p>
-      Terhitung aktif 3 hari kerja
-      <p>Pada hari Jumat tanggal 6 Juni 2025 sekitar pukul 07:00 menurut saksi, kedua pelaku keluar dari kontrakan Cisaganten membawa ransel dan karung, yang mana diduga membawa kabur semua peralatan tukang dan material kantor.
-    </p>
- 
-    </p>
+    <h3><a onclick="toggle('kronologi')">Kronologi</a></h3>
+    <div id="kronologi" class="hidden-content">
+      <p>Kedua pelaku ke Bandung untuk bekerja</p>
+      <p>Terhitung aktif 3 hari kerja</p>
+      <p>Pada hari Jumat tanggal 6 Juni 2025 sekitar pukul 07:00 menurut saksi, kedua pelaku keluar dari kontrakan Cisaganten membawa ransel dan karung, yang mana diduga membawa kabur semua peralatan tukang dan material kantor.</p>
+    </div>
 
     <h3>Data pelaku</h3>
     <ul>
@@ -98,48 +104,37 @@
       <li><a href="https://aryafoods.shop/bagus-irwan-khalifi.html">2. Bagus Irwan Khalifi</a></li>
     </ul>
 
-    <h3>Dasar hukum</h3>
-    <ul>
-      
-        <strong>Pasal 362 KUHP:</strong> Pencurian  
-        <p>Barang siapa mengambil barang sesuatu, yang seluruhnya atau sebagian kepunyaan orang lain, dengan maksud untuk dimiliki secara melawan hukum, dihukum karena pencurian.</p>
-      
-        <strong>Pasal 368 KUHP:</strong> Pemerasan  
-        <p>Barang siapa dengan maksud untuk menguntungkan diri sendiri atau orang lain secara melawan hukum, memaksa orang lain dengan kekerasan atau ancaman kekerasan untuk memberikan sesuatu barang, yang seluruhnya atau sebagian adalah milik orang itu sendiri atau orang lain.</p>
- 
-       <strong>Pasal 374 KUHP:</strong> Penggelapan
-
-<p>Penggelapan yang dilakukan oleh orang yang penguasaannya terhadap barang disebabkan karena ada hubungan kerja atau karena pencarian atau mendapat upah untuk itu, diancam dengan pidana penjara paling lama lima tahun.”
-
-
-<li>Unsur-unsur Pasal 374:
-
-<p>1. Pelaku adalah pekerja atau orang yang memperoleh kepercayaan karena hubungan kerja.
-
-
-<p>2. Barang yang digelapkan berada dalam penguasaannya karena pekerjaan atau karena diberi kepercayaan.
-<p/>
-      
-    <strong>Pasal 378 KUHP :</strong> Penipuan
-
-<p>Barang siapa dengan maksud untuk menguntungkan diri sendiri atau orang lain secara melawan hukum, dengan memakai nama palsu, martabat palsu, tipu muslihat, ataupun rangkaian kebohongan, menggerakkan orang lain untuk menyerahkan sesuatu barang, memberi utang atau menghapuskan piutang, diancam karena penipuan dengan pidana penjara paling lama empat tahun."
-
-</li></ul>
-    
+    <h3><a onclick="toggle('hukum-content')">Dasar hukum</a></h3>
+    <div id="hukum-content" class="hidden-content">
+      <ul>
+        <li><strong>Pasal 362 KUHP:</strong> Pencurian  
+          <p>Barang siapa mengambil barang sesuatu, yang seluruhnya atau sebagian kepunyaan orang lain, dengan maksud untuk dimiliki secara melawan hukum, dihukum karena pencurian.</p>
+        </li>
+        <li><strong>Pasal 368 KUHP:</strong> Pemerasan  
+          <p>Barang siapa dengan maksud untuk menguntungkan diri sendiri atau orang lain secara melawan hukum, memaksa orang lain dengan kekerasan atau ancaman kekerasan untuk memberikan sesuatu barang, yang seluruhnya atau sebagian adalah milik orang itu sendiri atau orang lain.</p>
+        </li>
+        <li><strong>Pasal 374 KUHP:</strong> Penggelapan  
+          <p>Penggelapan yang dilakukan oleh orang yang penguasaannya terhadap barang disebabkan karena ada hubungan kerja atau karena pencarian atau mendapat upah untuk itu, diancam dengan pidana penjara paling lama lima tahun.</p>
+          <p>Unsur-unsur:</p>
+          <ul>
+            <li>Pelaku adalah pekerja atau orang yang memperoleh kepercayaan karena hubungan kerja.</li>
+            <li>Barang yang digelapkan berada dalam penguasaannya karena pekerjaan atau karena diberi kepercayaan.</li>
+          </ul>
+        </li>
+        <li><strong>Pasal 378 KUHP:</strong> Penipuan  
+          <p>Barang siapa dengan maksud untuk menguntungkan diri sendiri atau orang lain secara melawan hukum, dengan memakai nama palsu, martabat palsu, tipu muslihat, ataupun rangkaian kebohongan, menggerakkan orang lain untuk menyerahkan sesuatu barang, memberi utang atau menghapuskan piutang, diancam karena penipuan dengan pidana penjara paling lama empat tahun.</p>
+        </li>
+      </ul>
+    </div>
 
     <h3>Saksi dan bukti</h3>
     <ul>
-      
       <li>Data dilengkapi di Polsek Gede Bage - Bandung</li>
     </ul>
-    </p>
-  
-        
-    </ul>
   </main>
-  
+
   <footer>
-    Artikel ini dicatat dan dipublish untuk memberi tahu seluruh warga negara republik indonesia agar berhati hati atas aksi serupa, Data dikumpulkan berdasarkan fakta dilapangan dan akan terus dikembangkan <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank"></a> | &copy; 2025 Arya Wiki
+    Artikel ini dicatat dan dipublish untuk memberi tahu seluruh warga negara republik indonesia agar berhati hati atas aksi serupa, Data dikumpulkan berdasarkan fakta dilapangan dan akan terus dikembangkan | &copy; 2025 Arya Wiki
   </footer>
 
 </body>
