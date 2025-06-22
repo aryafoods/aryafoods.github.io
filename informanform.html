@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Form Informan</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; max-width: 500px; margin: auto; }
+    input, textarea, button { width: 100%; margin: 10px 0; padding: 8px; }
+    img { max-width: 100px; margin-top: 10px; display: none; }
+  </style>
+</head>
+<body>
+  <h2>Kirim Informasi</h2>
+  <input type="text" id="nama" placeholder="Nama">
+  <textarea id="informasi" placeholder="Informasi / Komentar"></textarea>
+  <input type="text" id="balasan" placeholder="Balasan terhadap komentar (jika ada)">
+  <input type="file" id="foto" accept="image/*">
+  <img id="preview" />
+  <button onclick="kirim()">Kirim</button>
+  <div id="status"></div>
+
+  <script>
+    const url = "https://script.google.com/macros/s/AKfycbyRgTXyROj4cGp7RROVe_NlKK1vpaS9LmHIITFswISkPVCc8jPTt7z2Dy43GcKnjjMIKQ/exec";
+
+    let fotoBase64 = "";
+
+    document.getElementById('foto').addEventListener('change', function () {
+      const file = this.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        fotoBase64 = e.target.result;
+        document.getElementById('preview').src = fotoBase64;
+        document.getElementById('preview').style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+    });
+
+    function kirim() {
+      const data = {
+        nama: document.getElementById("nama").value,
+        informasi: document.getElementById("informasi").value,
+        balasan: document.getElementById("balasan").value,
+        foto: fotoBase64
+      };
+
+      fetch(url, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" }
+      })
+      .then(r => r.json())
+      .then(res => {
+        document.getElementById("status").innerText = res.status === "sukses" ? "✅ Terkirim!" : "❌ Gagal: " + res.error;
+      })
+      .catch(err => {
+        document.getElementById("status").innerText = "❌ Error koneksi";
+      });
+    }
+  </script>
+</body>
+</html>
