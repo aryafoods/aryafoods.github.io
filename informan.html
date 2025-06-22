@@ -2,16 +2,57 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Form Informan</title>
   <style>
-    body { font-family: sans-serif; max-width: 500px; margin: 20px auto; }
-    input, textarea, button { width: 100%; margin: 10px 0; padding: 8px; }
-    img.preview { max-width: 80px; height: auto; margin-top: 10px; display: none; border: 1px solid #ccc; }
-    img.komentar-img { max-width: 80px; margin-top: 5px; }
-    #status { margin-top: 10px; font-weight: bold; }
-    #tampilKomentar { margin-top: 30px; border-top: 2px solid #ddd; padding-top: 10px; }
-    .komentar { border-bottom: 1px solid #ccc; padding: 10px 0; }
-    .reply { background: #eef; padding: 5px; margin-top: 5px; }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      margin: 0;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    input, textarea, button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      font-size: 16px;
+    }
+    img.preview {
+      max-width: 100px;
+      height: auto;
+      margin-top: 10px;
+      display: none;
+      border: 1px solid #ccc;
+    }
+    img.komentar-img {
+      max-width: 100%;
+      height: auto;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+    }
+    #status {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    #tampilKomentar {
+      margin-top: 30px;
+      border-top: 2px solid #ddd;
+      padding-top: 10px;
+    }
+    .komentar {
+      border-bottom: 1px solid #ccc;
+      padding: 10px 0;
+    }
+    .reply {
+      background: #eef;
+      padding: 5px;
+      margin-top: 5px;
+    }
   </style>
 </head>
 <body>
@@ -28,16 +69,16 @@
   <div id="tampilKomentar"></div>
 
   <script>
-    let fotoBase64 = "";
+    let fotoFile;
 
     document.getElementById("foto").addEventListener("change", function () {
       const file = this.files[0];
       if (!file) return;
+      fotoFile = file;
       const reader = new FileReader();
       reader.onload = function (e) {
-        fotoBase64 = e.target.result;
         const preview = document.getElementById("preview");
-        preview.src = fotoBase64;
+        preview.src = e.target.result;
         preview.style.display = "block";
       };
       reader.readAsDataURL(file);
@@ -60,7 +101,7 @@
       const formData = new FormData();
       formData.append("nama", nama);
       formData.append("informasi", informasi);
-      formData.append("foto", fotoBase64);
+      if (fotoFile) formData.append("foto", fotoFile);
 
       fetch("https://script.google.com/macros/s/AKfycbw03U2ZRNWeMVOmvjJl50s_p4VANLCp1fWhyrjJicqLr4zm7y99A9MTk2lGZPmmtGeh/exec", {
         method: "POST",
