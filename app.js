@@ -13,29 +13,38 @@ document.getElementById("loginBtn").onclick = async () => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
     document.getElementById("app").style.display = "block";
+    document.getElementById("userEmail").textContent = "Login sebagai: " + auth.currentUser.email;
+    loadPosts(); // tampilkan semua posting
   } catch (e) {
     alert("Login gagal: " + e.message);
   }
 };
 
 document.getElementById("postBtn").onclick = async () => {
-  const text = document.getElementById("postInput").value;
-  if (text.trim()) {
-    await addDoc(collection(db, "posts"), {
-      text,
-      time: Date.now()
-    });
-    document.getElementById("postInput").value = "";
-  }
+  const text = document.getElementById("postInput").value.trim();
+  if (!text) return;
+
+  await addDoc(collection(db, "posts"), {
+    uid: auth.currentUser.uid,
+    email: auth.currentUser.email,
+    text,
+    time: Date.now()
+  });
+
+  document.getElementById("postInput").value = "";
 };
 
-const postList = document.getElementById("postList");
-const q = query(collection(db, "posts"), orderBy("time", "desc"));
-onSnapshot(q, (snapshot) => {
-  postList.innerHTML = "";
-  snapshot.forEach(doc => {
-    const li = document.createElement("li");
-    li.textContent = doc.data().text;
-    postList.appendChild(li);
+function loadPosts() {
+  const postList = document.getElementById("postList");
+  const q = query(collection(db, "posts"), orderBy("time", "desc"));
+
+  onSnapshot(q, (snapshot) => {
+    postList.innerHTML = "";
+    snapshot.forEach(doc => {
+      const data = doc.data();
+      const li = document.createElement("li");
+      li.textContent = `${data.email}: ${data.text}`;
+      postList.appendChild(li);
+    });
   });
-});
+}
