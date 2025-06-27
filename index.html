@@ -1,22 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Mini Sosmed</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sosmed Mini</title>
 </head>
-<body class="p-4 bg-gray-100">
-  <h1 class="text-xl font-bold mb-4">Mini Sosmed</h1>
+<body>
+  <h2>Login</h2>
+  <input type="email" id="email" placeholder="Email" />
+  <input type="password" id="password" placeholder="Password" />
+  <button id="loginBtn">Login</button>
 
-  <input id="email" placeholder="Email" class="mb-2 p-2 block border w-full" />
-  <input id="password" type="password" placeholder="Password" class="mb-2 p-2 block border w-full" />
-  <button id="login-btn" class="bg-blue-500 text-white px-4 py-2 w-full mb-4">Login</button>
+  <div id="app" style="display:none; margin-top: 20px;">
+    <h2>Posting</h2>
+    <input type="text" id="postInput" placeholder="Apa kabar?" />
+    <button id="postBtn">Kirim</button>
+    <ul id="postList"></ul>
+  </div>
 
-  <textarea id="post-content" placeholder="Apa yang kamu pikirkan?" class="w-full p-2 border mb-2"></textarea>
-  <button id="post-btn" class="bg-green-500 text-white px-4 py-2 w-full">Posting</button>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
 
-  <div id="feed" class="mt-6 space-y-4"></div>
-
-  <script type="module" src="./app.js"></script>
+  <!-- Main App -->
+  <script type="module" src="app.js"></script>
 </body>
 </html>
