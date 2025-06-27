@@ -1,13 +1,42 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, updateProfile, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  updateProfile,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  onSnapshot,
+  query,
+  orderBy
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 import { firebaseConfig } from './firebase.js';
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Halaman LOGIN
+function renderPosts() {
+  const q = query(collection(db, "posts"), orderBy("time", "desc"));
+  const postList = document.getElementById("postList");
+
+  onSnapshot(q, (snapshot) => {
+    postList.innerHTML = "";
+    snapshot.forEach(doc => {
+      const data = doc.data();
+      const li = document.createElement("li");
+      li.textContent = `${data.email}: ${data.text}`;
+      postList.appendChild(li);
+    });
+  });
+}
+
+// ------------------------------
+// Login Page
+// ------------------------------
 if (location.pathname.endsWith("index.html") || location.pathname === "/") {
   const loginBtn = document.getElementById("loginBtn");
   if (loginBtn) {
@@ -24,25 +53,14 @@ if (location.pathname.endsWith("index.html") || location.pathname === "/") {
   }
 }
 
-// Halaman BERANDA
+// ------------------------------
+// Home Page
+// ------------------------------
 if (location.pathname.endsWith("home.html")) {
   onAuthStateChanged(auth, (user) => {
     if (!user) return location.href = "index.html";
 
     document.getElementById("userEmail").textContent = `Login sebagai: ${user.email}`;
-
-    const q = query(collection(db, "posts"), orderBy("time", "desc"));
-    const postList = document.getElementById("postList");
-
-    onSnapshot(q, (snapshot) => {
-      postList.innerHTML = "";
-      snapshot.forEach(doc => {
-        const data = doc.data();
-        const li = document.createElement("li");
-        li.textContent = `${data.email}: ${data.text}`;
-        postList.appendChild(li);
-      });
-    });
 
     document.getElementById("postBtn").onclick = async () => {
       const text = document.getElementById("postInput").value.trim();
@@ -55,10 +73,15 @@ if (location.pathname.endsWith("home.html")) {
       });
       document.getElementById("postInput").value = "";
     };
+
+    // Panggil render post setelah user terautentikasi
+    renderPosts();
   });
 }
 
-// Halaman PROFIL
+// ------------------------------
+// Profil Page
+// ------------------------------
 if (location.pathname.endsWith("profil.html")) {
   onAuthStateChanged(auth, (user) => {
     if (!user) return location.href = "index.html";
