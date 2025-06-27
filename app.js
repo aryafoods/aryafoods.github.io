@@ -7,22 +7,18 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Login
 document.getElementById("loginBtn").onclick = async () => {
-  const email = document.getElementById("email").value;
-  const pass = document.getElementById("password").value;
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
   try {
-    await signInWithEmailAndPassword(auth, email, pass);
-    alert("Login sukses!");
+    await signInWithEmailAndPassword(auth, email, password);
     document.getElementById("app").style.display = "block";
   } catch (e) {
     alert("Login gagal: " + e.message);
   }
 };
 
-// Posting
-const postBtn = document.getElementById("postBtn");
-postBtn.onclick = async () => {
+document.getElementById("postBtn").onclick = async () => {
   const text = document.getElementById("postInput").value;
   if (text.trim()) {
     await addDoc(collection(db, "posts"), {
@@ -33,7 +29,6 @@ postBtn.onclick = async () => {
   }
 };
 
-// Tampilkan posting
 const postList = document.getElementById("postList");
 const q = query(collection(db, "posts"), orderBy("time", "desc"));
 onSnapshot(q, (snapshot) => {
