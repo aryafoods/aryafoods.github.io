@@ -10,11 +10,12 @@ const db = getFirestore(app);
 document.getElementById("loginBtn").onclick = async () => {
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
+
   try {
     await signInWithEmailAndPassword(auth, email, password);
     document.getElementById("app").style.display = "block";
     document.getElementById("userEmail").textContent = "Login sebagai: " + auth.currentUser.email;
-    loadPosts(); // tampilkan semua posting
+    loadPosts();
   } catch (e) {
     alert("Login gagal: " + e.message);
   }
